@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourApp
 {
-    class Area
+    class JsonSource
     {
         private int rnum;
         private string name;
