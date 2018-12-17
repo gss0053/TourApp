@@ -38,8 +38,9 @@ namespace TourApp
             // json얻어오기
             jsonObj = GetJson(GetPath("areaCode", 17));
 
-            var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr, areaList, cbxArea);
+            var areaItemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            var serviceItemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            GetObject(areaItemsArr, areaList, cbxArea);
         }
         // 주소 얻어오는 메서드
         private string GetPath(string apiKind, int rowNum)
@@ -85,10 +86,11 @@ namespace TourApp
 
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbxMuni.Text = "소분류";
             cbxMuni.Items.Clear();
             muniList.Clear();
             // 세종 JSON 구조 달라서 if문 걸어줌
-            jsonObj = GetJson(GetPath("areaCode", 50));
+            jsonObj = GetJson(GetPath("areaCode", 50) + "&areaCode=" + areaList[cbxArea.SelectedIndex].Code);
             if (cbxArea.SelectedIndex != 7)
             {
                 var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
