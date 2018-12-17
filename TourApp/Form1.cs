@@ -44,31 +44,17 @@ namespace TourApp
             this.Text = "한국 국문관광정보 프로그램";
 
             // json얻어오기
-            jsonObj = GetJson(GetPath("areaCode", 17));
+            jsonObj = GetJson(GetPath("areaCode", "17"));
 
             var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
             GetObject(itemsArr, areaList, cbxArea);
 
 
             // 대분류 얻어오기
-            jsonCat1 = GetJson(GetPath("categoryCode", 10));
-            var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr1, cat1List, cbxService1);
+            jsonCat1 = GetJson(GetPath("categoryCode", "7"));
+            itemsArr = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+            GetObject(itemsArr, cat1List, cbxService1);
 
-        }
-        // 주소 얻어오는 메서드
-        private string GetPath(string apiKind, int rowNum)
-        {
-            if (apiKind == "areaCode")
-            {
-                path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&_type=json";
-            }
-            else if (apiKind == "categoryCode")
-            {
-                path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&_type=json";             
-            }
-            
-            return path;
         }
 
         private void GetObject(JArray itemsArr, List<JsonSource> lst, ComboBox cbx)
@@ -106,13 +92,20 @@ namespace TourApp
             return jsonObj;
         }
 
+        // 주소 얻어오는 메서드
+        private string GetPath(string apiKind, string rowNum)
+        {
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json";
+            return path;
+        }
+
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxMuni.Text = "소분류";
             cbxMuni.Items.Clear();
             muniList.Clear();
             // 세종 JSON 구조 달라서 if문 걸어줌
-            jsonObj = GetJson(GetPath("areaCode", 50) + "&areaCode=" + areaList[cbxArea.SelectedIndex].Code);
+            jsonObj = GetJson(GetPath("areaCode", "50"));
             if (cbxArea.SelectedIndex != 7)
             {
                 var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
@@ -131,12 +124,24 @@ namespace TourApp
                 cbxMuni.Items.Add(item.Property("name").Value.ToString());
             }
         }
-
+        // 콤보박스 아이템이 체크되었는지 확인해서 안되어있으면 ""를 되어있으면 코드를 반납해주는 메서드
+        private string checkIndex(ComboBox cbx, List<JsonSource> lst)
+        {
+            string temp = string.Empty;
+            if (cbx.SelectedIndex == -1)
+            {
+                return temp;
+            }
+            else
+            {
+                return lst[cbx.SelectedIndex].Code;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "areaBasedList" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1=" + cat1List[cbxService1.SelectedIndex].Code + "&cat2=" + cat2List[cbxService2.SelectedIndex].Code+ "&cat3=" + cat3List[cbxService3.SelectedIndex].Code + "&areaCode="+areaList[cbxArea.SelectedIndex].Code + "&sigunguCode=" + muniList[cbxMuni.SelectedIndex].Code + "&_type=json";
+            path = GetPath("areaBasedList", "10");
 
-            textBox1.Text =GetJson(path).ToString();
+            textBox1.Text = GetJson(path).ToString();
         }
 
         private void cbxService1_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,7 +153,7 @@ namespace TourApp
             cbxService3.Text = "소분류";
             cat3List.Clear();
 
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1="+ cat1List[cbxService1.SelectedIndex].Code+ "&_type=json";
+            GetPath("categoryCode", "10");
 
             jsonCat1 = GetJson(path);
             var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
@@ -162,7 +167,7 @@ namespace TourApp
             cbxService3.Text = "소분류";
             cat3List.Clear();
 
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1=" + cat1List[cbxService1.SelectedIndex].Code+ "&cat2=" + cat2List[cbxService2.SelectedIndex].Code + "&_type=json";
+            path = GetPath("categoryCode", "10");
 
             jsonCat1 = GetJson(path);
             var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
