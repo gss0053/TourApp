@@ -93,6 +93,7 @@
             this.cbxService2.Size = new System.Drawing.Size(121, 20);
             this.cbxService2.TabIndex = 8;
             this.cbxService2.Text = "중분류";
+            this.cbxService2.SelectedIndexChanged += new System.EventHandler(this.cbxService2_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -111,6 +112,7 @@
             this.cbxService1.Size = new System.Drawing.Size(121, 20);
             this.cbxService1.TabIndex = 6;
             this.cbxService1.Text = "대분류";
+            this.cbxService1.SelectedIndexChanged += new System.EventHandler(this.cbxService1_SelectedIndexChanged);
             // 
             // cbxService3
             // 
