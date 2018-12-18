@@ -7,14 +7,45 @@
     "body": {
       "items": {
         "item": {
+<<<<<<< HEAD
           "code": "A0401",
           "name": "¼îÇÎ",
+=======
+          "code": "B0201",
+          "name": "¼÷¹Ú½Ã¼³",
+>>>>>>> sjm
           "rnum": 1
         }
       },
       "numOfRows": 10,
       "pageNo": 1,
       "totalCount": 1
+    }
+  }
+} {
+  "response": {
+    "header": {
+      "resultCode": "0000",
+      "resultMsg": "OK"
+    },
+    "body": {
+      "items": {
+        "item": [
+          {
+            "code": "A0101",
+            "name": "ÀÚ¿¬°ü±¤Áö",
+            "rnum": 1
+          },
+          {
+            "code": "A0102",
+            "name": "°ü±¤ÀÚ¿ø",
+            "rnum": 2
+          }
+        ]
+      },
+      "numOfRows": 10,
+      "pageNo": 1,
+      "totalCount": 2
     }
   }
 }
