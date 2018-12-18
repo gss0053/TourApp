@@ -148,12 +148,27 @@ namespace TourApp
             cbxService3.Text = "소분류";
             cat3List.Clear();
 
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1="+ cat1List[cbxService1.SelectedIndex].Code+ "&_type=json";
-
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1=" + cat1List[cbxService1.SelectedIndex].Code + "&_type=json";
             jsonCat1 = GetJson(path);
-            var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr1, cat2List, cbxService2);
 
+            if (cbxService1.SelectedIndex !=3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5)
+            {              
+                var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                GetObject(itemsArr1, cat2List, cbxService2);
+            }
+            else
+            {
+                var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                source = new JsonSource
+                {
+                    Code = item.GetValue("code").ToString(),
+                    Name = item.GetValue("name").ToString(),
+                    Rnum = int.Parse(item.GetValue("rnum").ToString())
+                };
+                cat2List.Add(source);
+                
+                cbxService2.Items.Add(item.Property("name").Value.ToString());            
+            }     
         }
 
         private void cbxService2_SelectedIndexChanged(object sender, EventArgs e)
@@ -162,11 +177,32 @@ namespace TourApp
             cbxService3.Text = "소분류";
             cat3List.Clear();
 
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1=" + cat1List[cbxService1.SelectedIndex].Code+ "&cat2=" + cat2List[cbxService2.SelectedIndex].Code + "&_type=json";
-
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + "categoryCode" + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + 10 + "&cat1=" + cat1List[cbxService1.SelectedIndex].Code + "&cat2=" + cat2List[cbxService2.SelectedIndex].Code + "&_type=json";
             jsonCat1 = GetJson(path);
-            var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr1, cat3List, cbxService3);
+
+            if (cbxService1.SelectedIndex != 6)
+            {
+                var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                GetObject(itemsArr1, cat3List, cbxService3);
+            }
+            else
+            {
+                var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                source = new JsonSource
+                {
+                    Code = item.GetValue("code").ToString(),
+                    Name = item.GetValue("name").ToString(),
+                    Rnum = int.Parse(item.GetValue("rnum").ToString())
+                };
+                cat3List.Add(source);
+
+                cbxService3.Items.Add(item.Property("name").Value.ToString());
+            }
+
+
+
+
+
         }
     }
 }
