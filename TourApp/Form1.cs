@@ -32,7 +32,7 @@ namespace TourApp
 
         private string key = "et09skASPRv2AIlhJrNK8wPRL%2BG8S%2BBeEG35iFl0kejmnWLWA%2B1gAr480VSUor7FywfV%2Fuf1H9zlkrTYDt%2FV%2FQ%3D%3D";
         private string path = "";
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -117,6 +117,8 @@ namespace TourApp
         {
             path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json";
             return path;
+
+            
         }
 
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)

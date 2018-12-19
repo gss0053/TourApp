@@ -63,7 +63,7 @@
             // lbl_region
             // 
             this.lbl_region.AutoSize = true;
-            this.lbl_region.Location = new System.Drawing.Point(205, 3);
+            this.lbl_region.Location = new System.Drawing.Point(205, 9);
             this.lbl_region.Name = "lbl_region";
             this.lbl_region.Size = new System.Drawing.Size(57, 12);
             this.lbl_region.TabIndex = 3;
@@ -101,7 +101,7 @@
             // lbl_service
             // 
             this.lbl_service.AutoSize = true;
-            this.lbl_service.Location = new System.Drawing.Point(601, 4);
+            this.lbl_service.Location = new System.Drawing.Point(601, 9);
             this.lbl_service.Name = "lbl_service";
             this.lbl_service.Size = new System.Drawing.Size(65, 12);
             this.lbl_service.TabIndex = 7;
