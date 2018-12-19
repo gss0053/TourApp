@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourApp
 {
-    class Search_Result
+    class Result
     {
         private string addr1;
 

@@ -26,6 +26,7 @@ namespace TourApp
         List<JsonSource> cat1List;  // 대분류
         List<JsonSource> cat2List;  // 중분류
         List<JsonSource> cat3List;  // 소분류
+        List<Result> resultList; // 검색결과 컬렉션
 
         private string key = "iTK7s%2Fzqx%2BryS2LJoVUsUlYMRuHqxtez6UB7TdDdf%2FZNdvCjoilYCNJWbX%2BfX7ZXum2O8mQ8tn3mal2jzuplRA%3D%3D";
         private string path = "";
@@ -33,11 +34,13 @@ namespace TourApp
         public Form1()
         {
             InitializeComponent();
+            listView.View = View.LargeIcon;
             areaList = new List<JsonSource>();
             muniList = new List<JsonSource>();
             cat1List = new List<JsonSource>();
             cat2List = new List<JsonSource>();
             cat3List = new List<JsonSource>();
+            resultList = new List<Result>();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -137,12 +140,7 @@ namespace TourApp
                 return lst[cbx.SelectedIndex].Code;
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            path = GetPath("areaBasedList", "10");
 
-            textBox1.Text = GetJson(path).ToString();
-        }
 
         private void cbxService1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -156,11 +154,11 @@ namespace TourApp
 
             GetPath("categoryCode", "10");
 
-    
+
             jsonCat1 = GetJson(path);
 
-            if (cbxService1.SelectedIndex !=3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5)
-            {              
+            if (cbxService1.SelectedIndex != 3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5)
+            {
                 var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
                 GetObject(itemsArr1, cat2List, cbxService2);
             }
@@ -174,9 +172,9 @@ namespace TourApp
                     Rnum = int.Parse(item.GetValue("rnum").ToString())
                 };
                 cat2List.Add(source);
-                
-                cbxService2.Items.Add(item.Property("name").Value.ToString());            
-            }     
+
+                cbxService2.Items.Add(item.Property("name").Value.ToString());
+            }
         }
 
         private void cbxService2_SelectedIndexChanged(object sender, EventArgs e)
@@ -209,11 +207,125 @@ namespace TourApp
 
                 cbxService3.Items.Add(item.Property("name").Value.ToString());
             }
+        }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            listView.Items.Clear();
+            imgList.Images.Clear();
+            resultList.Clear();
+            path = GetPath("areaBasedList", "15");
+            jsonObj = GetJson(path);
 
+            var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            foreach (JObject item in itemsArr)
+            {
+                Result result = new Result();
+                if (item.Property("addr1") != null)
+                {
+                    result.Addr1 = item.GetValue("addr1").ToString();
+                }
+                if (item.Property("addr2") != null)
+                {
+                    result.Addr2 = item.GetValue("addr2").ToString();
+                }
+                if (item.Property("areacode") != null)
+                {
+                    result.Areacode = int.Parse(item.GetValue("areacode").ToString());
+                }
+                if (item.Property("cat1") != null)
+                {
+                    result.Cat1 = item.GetValue("cat1").ToString();
+                }
+                if (item.Property("cat2") != null)
+                {
+                    result.Cat2 = item.GetValue("cat2").ToString();
+                }
+                if (item.Property("cat3") != null)
+                {
+                    result.Cat3 = item.GetValue("cat3").ToString();
+                }
+                if (item.Property("contentid") != null)
+                {
+                    result.Contentid = Int32.Parse(item.GetValue("contentid").ToString());
+                }
+                if (item.Property("contenttypeid") != null)
+                {
+                    result.Contenttypeid = Int32.Parse(item.GetValue("contenttypeid").ToString());
+                }
+                if (item.Property("createdtime") != null)
+                {
+                    result.Createdtime = Int64.Parse(item.GetValue("createdtime").ToString());
+                }
+                if (item.Property("mapx") != null)
+                {
+                    result.Mapx = double.Parse(item.GetValue("mapx").ToString());
+                }
+                if (item.Property("mapy") != null)
+                {
+                    result.Mapy = double.Parse(item.GetValue("mapy").ToString());
+                }
+                if (item.Property("mlevel") != null)
+                {
+                    result.Mlevel = Int32.Parse(item.GetValue("mlevel").ToString());
+                }
+                if (item.Property("modifiedtime") != null)
+                {
+                    result.Modifiedtime = double.Parse(item.GetValue("modifiedtime").ToString());
+                }
+                if (item.Property("readcount") != null)
+                {
+                    result.Readcount = Int32.Parse(item.GetValue("readcount").ToString());
+                }
+                if (item.Property("sigungucode") != null)
+                {
+                    result.Sigungucode = Int32.Parse(item.GetValue("sigungucode").ToString());
+                }
+                if (item.Property("title") != null)
+                {
+                    result.Title = item.GetValue("title").ToString();
+                }
+                if (item.Property("zipcode") != null)
+                {
+                    result.Zipcode = item.GetValue("zipcode").ToString();
+                }
+                if (item.Property("tel") != null)
+                {
+                    result.Tel = item.GetValue("tel").ToString();
+                }
 
+                ListViewItem li;
+                string title = result.Title;
+                listView.LargeImageList = imgList;
+                if (item.Property("firstimage") != null)
+                {
+                    result.Firstimage = item.GetValue("firstimage").ToString(); // 썸네일
 
+                    var req = WebRequest.Create(result.Firstimage) as HttpWebRequest;
+                    var res = req.GetResponse() as HttpWebResponse;
+                    var imgStream = res.GetResponseStream();
+                    Image file1 = Image.FromStream(imgStream);
+                    imgList.ImageSize = new Size(256, 256);
+                    imgList.ColorDepth = ColorDepth.Depth32Bit;
+                    imgList.Images.Add(title, file1);
 
+                    li = new ListViewItem(title);
+                    li.ImageKey = title;
+                    listView.Items.Add(li);
+                }
+                else
+                {
+                    li = new ListViewItem(title);
+                    listView.Items.Add(li);
+                }
+
+                if (item.Property("firstimage2") != null)
+                {
+                    result.Firstimage2 = item.GetValue("firstimage2").ToString(); // 썸네일
+                }
+
+                resultList.Add(result);
+            }
         }
     }
 }
