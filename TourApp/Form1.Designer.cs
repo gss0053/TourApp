@@ -44,10 +44,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1002, 101);
+            this.textBox1.Location = new System.Drawing.Point(1002, 348);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 567);
+            this.textBox1.Size = new System.Drawing.Size(181, 320);
             this.textBox1.TabIndex = 0;
             // 
             // cbxArea
@@ -128,9 +128,9 @@
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(8, 101);
+            this.listView.Location = new System.Drawing.Point(8, 348);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(988, 567);
+            this.listView.Size = new System.Drawing.Size(988, 320);
             this.listView.TabIndex = 10;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
