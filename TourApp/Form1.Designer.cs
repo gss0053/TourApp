@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbxArea = new System.Windows.Forms.ComboBox();
             this.lbl_region = new System.Windows.Forms.Label();
             this.cbxMuni = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.cbxService2 = new System.Windows.Forms.ComboBox();
             this.lbl_service = new System.Windows.Forms.Label();
             this.cbxService1 = new System.Windows.Forms.ComboBox();
@@ -45,16 +43,8 @@
             this.lbl_small1 = new System.Windows.Forms.Label();
             this.lbl_middle = new System.Windows.Forms.Label();
             this.lbl_small2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_lang = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(644, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(539, 569);
-            this.textBox1.TabIndex = 0;
             // 
             // cbxArea
             // 
@@ -83,16 +73,6 @@
             this.cbxMuni.Size = new System.Drawing.Size(182, 20);
             this.cbxMuni.TabIndex = 4;
             this.cbxMuni.Text = "소분류";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(563, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "JsonTest";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbxService2
             // 
@@ -152,7 +132,7 @@
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(561, 102);
+            this.btn_clear.Location = new System.Drawing.Point(620, 184);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(48, 23);
             this.btn_clear.TabIndex = 12;
@@ -205,21 +185,21 @@
             this.lbl_small2.TabIndex = 17;
             this.lbl_small2.Text = "소분류";
             // 
-            // label1
+            // lbl_lang
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 12);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Language";
+            this.lbl_lang.AutoSize = true;
+            this.lbl_lang.Location = new System.Drawing.Point(16, 27);
+            this.lbl_lang.Name = "lbl_lang";
+            this.lbl_lang.Size = new System.Drawing.Size(61, 12);
+            this.lbl_lang.TabIndex = 18;
+            this.lbl_lang.Text = "Language";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1195, 680);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_lang);
             this.Controls.Add(this.lbl_small2);
             this.Controls.Add(this.lbl_middle);
             this.Controls.Add(this.lbl_small1);
@@ -232,11 +212,9 @@
             this.Controls.Add(this.cbxService2);
             this.Controls.Add(this.lbl_service);
             this.Controls.Add(this.cbxService1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbxMuni);
             this.Controls.Add(this.lbl_region);
             this.Controls.Add(this.cbxArea);
-            this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -246,12 +224,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cbxArea;
         private System.Windows.Forms.Label lbl_region;
         private System.Windows.Forms.ComboBox cbxMuni;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbxService2;
         private System.Windows.Forms.Label lbl_service;
         private System.Windows.Forms.ComboBox cbxService1;
@@ -264,7 +239,7 @@
         private System.Windows.Forms.Label lbl_small1;
         private System.Windows.Forms.Label lbl_middle;
         private System.Windows.Forms.Label lbl_small2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_lang;
     }
 }
 
