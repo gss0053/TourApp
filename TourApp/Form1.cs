@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
 
+
 namespace TourApp
 {
     public partial class Form1 : Form
@@ -27,8 +28,9 @@ namespace TourApp
         List<JsonSource> cat2List;  // 중분류
         List<JsonSource> cat3List;  // 소분류
         List<Result> resultList; // 검색결과 컬렉션
+        List<Language> languages;
 
-        private string key = "iTK7s%2Fzqx%2BryS2LJoVUsUlYMRuHqxtez6UB7TdDdf%2FZNdvCjoilYCNJWbX%2BfX7ZXum2O8mQ8tn3mal2jzuplRA%3D%3D";
+        private string key = "et09skASPRv2AIlhJrNK8wPRL%2BG8S%2BBeEG35iFl0kejmnWLWA%2B1gAr480VSUor7FywfV%2Fuf1H9zlkrTYDt%2FV%2FQ%3D%3D";
         private string path = "";
 
         public Form1()
@@ -41,22 +43,37 @@ namespace TourApp
             cat2List = new List<JsonSource>();
             cat3List = new List<JsonSource>();
             resultList = new List<Result>();
+            languages = new List<Language>();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = "한국 국문관광정보 프로그램";
 
-            // json얻어오기
-            jsonObj = GetJson(GetPath("areaCode", "17"));
+            //KorService 국어
+            //EngService 영어
+            //JpnService 일어
+            //ChsService 중문(간체)
+            //ChtService 중문(번체)
+            //GerService 독어(독일어) 언어 선택 : Sprache wählen 지역 선택 : Region auswählen
+            //FreService 불어(프랑스어)
+            //SpnService 서어(스페인어)
+            //RusService 노어(러시아어)
 
-            var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr, areaList, cbxArea);
-
-
-            // 대분류 얻어오기
-            jsonCat1 = GetJson(GetPath("categoryCode", "7"));
-            itemsArr = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-            GetObject(itemsArr, cat1List, cbxService1);
+            languages.Clear();
+            languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류"));
+            languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category"));
+            languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"));
+            languages.Add(new Language("ChsService", "简体中文(중어-간체)", "选择语言", "选择地区", "服务分类", "主要类别", "中产阶级", "小类"));
+            languages.Add(new Language("ChtService", "繁體中文(중어-번체)", "選擇語言", "選擇地區", "服務分類", "主要類別", "中產階級", "小類"));
+            languages.Add(new Language("GerService", "Deutsch(독일어)", "Sprache wählen", "Region auswählen", "Service Klassifizierung", "Hauptkategorie", "MittelKategorie", "Kleine Kategorie"));
+            languages.Add(new Language("FreService", "Le français(프랑스어)", "Sélectionnez la langue", "Sélectionnez une région", "Classification de service", "Catégorie majeure", "Classe moyenne", "Petite catégorie"));
+            languages.Add(new Language("SpnService", "Español(스페인어)", "Seleccionar idioma", "Seleccione region", "Clasificación de servicios", "Catégorie majeure", "Clase media", "Categoría pequeña"));
+            languages.Add(new Language("RusService", "русский(러시아어)", "Выберите язык", "Выберите регион", "Сервисная классификация", "Основная категория", "Средний класс", "Малая категория"));
+            foreach (var item in languages)
+            {
+                cbx_language.Items.Add(item.KorName);
+            }
+            cbx_language.SelectedIndex = 0;
 
         }
 
@@ -96,9 +113,9 @@ namespace TourApp
         }
 
         // 주소 얻어오는 메서드
-        private string GetPath(string apiKind, string rowNum)
+        private string GetPath(string language, string apiKind, string rowNum)
         {
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json";
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json";
             return path;
         }
 
@@ -108,7 +125,8 @@ namespace TourApp
             cbxMuni.Items.Clear();
             muniList.Clear();
             // 세종 JSON 구조 달라서 if문 걸어줌
-            jsonObj = GetJson(GetPath("areaCode", "50"));
+            jsonObj = GetJson(GetPath(languages[cbx_language.SelectedIndex].EngName, "areaCode", "50"));
+
             if (cbxArea.SelectedIndex != 7)
             {
                 var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
@@ -142,6 +160,7 @@ namespace TourApp
         }
 
 
+        // 대분류가 바뀔때 중분류
         private void cbxService1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxService2.Items.Clear();
@@ -152,71 +171,116 @@ namespace TourApp
             cat3List.Clear();
 
 
-            GetPath("categoryCode", "10");
-
+            GetPath(languages[cbx_language.SelectedIndex].EngName, "categoryCode", "10");
 
             jsonCat1 = GetJson(path);
 
-            if (cbxService1.SelectedIndex != 3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5)
+            if (cbx_language.SelectedIndex == 0)
             {
-                var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-                GetObject(itemsArr1, cat2List, cbxService2);
+                if (cbxService1.SelectedIndex != 3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5)
+                {
+                    var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    GetObject(itemsArr1, cat2List, cbxService2);
+                }
+                else
+                {
+                    var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    source = new JsonSource
+                    {
+                        Code = item.GetValue("code").ToString(),
+                        Name = item.GetValue("name").ToString(),
+                        Rnum = int.Parse(item.GetValue("rnum").ToString())
+                    };
+                    cat2List.Add(source);
+
+                    cbxService2.Items.Add(item.Property("name").Value.ToString());
+                }
             }
             else
             {
-                var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-                source = new JsonSource
+                if (cbxService1.SelectedIndex != 3 && cbxService1.SelectedIndex != 4 && cbxService1.SelectedIndex != 5 && cbxService1.SelectedIndex != 6)
                 {
-                    Code = item.GetValue("code").ToString(),
-                    Name = item.GetValue("name").ToString(),
-                    Rnum = int.Parse(item.GetValue("rnum").ToString())
-                };
-                cat2List.Add(source);
+                    var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    GetObject(itemsArr1, cat2List, cbxService2);
+                }
+                else
+                {
+                    var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    source = new JsonSource
+                    {
+                        Code = item.GetValue("code").ToString(),
+                        Name = item.GetValue("name").ToString(),
+                        Rnum = int.Parse(item.GetValue("rnum").ToString())
+                    };
+                    cat2List.Add(source);
 
-                cbxService2.Items.Add(item.Property("name").Value.ToString());
+                    cbxService2.Items.Add(item.Property("name").Value.ToString());
+                }
             }
         }
 
+        // 중분류의 바뀔때 소분류 
         private void cbxService2_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxService3.Items.Clear();
             cbxService3.Text = "소분류";
             cat3List.Clear();
 
-
-            path = GetPath("categoryCode", "10");
-
+            path = GetPath(languages[cbx_language.SelectedIndex].EngName, "categoryCode", "10");
 
             jsonCat1 = GetJson(path);
 
-            if (cbxService1.SelectedIndex != 6)
+            if (cbx_language.SelectedIndex == 0)
             {
-                var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-                GetObject(itemsArr1, cat3List, cbxService3);
+
+                if (cbxService1.SelectedIndex != 6 && !(cbxService1.SelectedIndex == 2 && cbxService2.SelectedIndex == 4))
+                {
+                    var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    GetObject(itemsArr1, cat3List, cbxService3);
+                }
+                else
+                {
+                    var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    source = new JsonSource
+                    {
+                        Code = item.GetValue("code").ToString(),
+                        Name = item.GetValue("name").ToString(),
+                        Rnum = int.Parse(item.GetValue("rnum").ToString())
+                    };
+                    cat3List.Add(source);
+
+                    cbxService3.Items.Add(item.Property("name").Value.ToString());
+                }
             }
             else
             {
-                var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
-                source = new JsonSource
+                if (!(cbxService1.SelectedIndex == 2 && cbxService2.SelectedIndex == 4))
                 {
-                    Code = item.GetValue("code").ToString(),
-                    Name = item.GetValue("name").ToString(),
-                    Rnum = int.Parse(item.GetValue("rnum").ToString())
-                };
-                cat3List.Add(source);
+                    var itemsArr1 = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    GetObject(itemsArr1, cat3List, cbxService3);
+                }
+                else
+                {
+                    var item = JObject.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+                    source = new JsonSource
+                    {
+                        Code = item.GetValue("code").ToString(),
+                        Name = item.GetValue("name").ToString(),
+                        Rnum = int.Parse(item.GetValue("rnum").ToString())
+                    };
+                    cat3List.Add(source);
 
-                cbxService3.Items.Add(item.Property("name").Value.ToString());
+                    cbxService3.Items.Add(item.Property("name").Value.ToString());
+                }
             }
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             listView.Items.Clear();
             imgList.Images.Clear();
             resultList.Clear();
-            path = GetPath("areaBasedList", "15");
+            path = GetPath(languages[cbx_language.SelectedIndex].EngName, "areaBasedList", "15");
             jsonObj = GetJson(path);
-
             var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
             foreach (JObject item in itemsArr)
             {
@@ -300,7 +364,6 @@ namespace TourApp
                 if (item.Property("firstimage") != null)
                 {
                     result.Firstimage = item.GetValue("firstimage").ToString(); // 썸네일
-
                     var req = WebRequest.Create(result.Firstimage) as HttpWebRequest;
                     var res = req.GetResponse() as HttpWebResponse;
                     var imgStream = res.GetResponseStream();
@@ -323,9 +386,60 @@ namespace TourApp
                 {
                     result.Firstimage2 = item.GetValue("firstimage2").ToString(); // 썸네일
                 }
-
                 resultList.Add(result);
             }
+        }
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            //    cbxArea.Text = cbxService1.Text = "대분류";
+            //    cbxMuni.Text = cbxService3.Text = "소분류";
+            //    cbxService2.Text = "중분류";
+            cbx_language.Items.Clear();
+            cbxArea.Items.Clear();
+            cbxMuni.Items.Clear();
+            cbxService1.Items.Clear();
+            cbxService2.Items.Clear();
+            cbxService3.Items.Clear();
+
+            Form1_Load(null, null);
+            //cbxMuni.Text = cbxService3.Text 
+        }
+
+        //다국어 바뀔때
+        private void cbx_language_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxArea.Items.Clear();
+            cbxMuni.Items.Clear();
+            cbxService1.Items.Clear();
+            cbxService2.Items.Clear();
+            cbxService3.Items.Clear();
+            areaList.Clear();
+            muniList.Clear();
+            cat1List.Clear();
+            cat2List.Clear();
+            cat3List.Clear();
+
+            lbl_language.Text = languages[cbx_language.SelectedIndex].Select_language;
+            lbl_region.Text = languages[cbx_language.SelectedIndex].Select_region;
+            lbl_service.Text = languages[cbx_language.SelectedIndex].Service_classification;
+            lbl_main1.Text = lbl_main2.Text = languages[cbx_language.SelectedIndex].Main_Category;
+            lbl_middle.Text = languages[cbx_language.SelectedIndex].Middle_class;
+            lbl_small1.Text = lbl_small2.Text = languages[cbx_language.SelectedIndex].Small_Category;
+
+            jsonObj = GetJson(GetPath(languages[cbx_language.SelectedIndex].EngName, "areaCode", "17"));
+
+            var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            GetObject(itemsArr, areaList, cbxArea);
+            cbx_language.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxArea.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxMuni.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxService1.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxService2.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxService3.DropDownStyle = ComboBoxStyle.DropDownList;
+            // 대분류 얻어오기
+            jsonCat1 = GetJson(GetPath(languages[cbx_language.SelectedIndex].EngName, "categoryCode", "7"));
+            itemsArr = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
+            GetObject(itemsArr, cat1List, cbxService1);
         }
     }
 }

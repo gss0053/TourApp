@@ -29,58 +29,58 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbxArea = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_region = new System.Windows.Forms.Label();
             this.cbxMuni = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cbxService2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_service = new System.Windows.Forms.Label();
             this.cbxService1 = new System.Windows.Forms.ComboBox();
             this.cbxService3 = new System.Windows.Forms.ComboBox();
             this.listView = new System.Windows.Forms.ListView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.lbl_language = new System.Windows.Forms.Label();
+            this.cbx_language = new System.Windows.Forms.ComboBox();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.lbl_main1 = new System.Windows.Forms.Label();
+            this.lbl_main2 = new System.Windows.Forms.Label();
+            this.lbl_small1 = new System.Windows.Forms.Label();
+            this.lbl_middle = new System.Windows.Forms.Label();
+            this.lbl_small2 = new System.Windows.Forms.Label();
+            this.lbl_lang = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1002, 348);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 320);
-            this.textBox1.TabIndex = 0;
             // 
             // cbxArea
             // 
             this.cbxArea.FormattingEnabled = true;
-            this.cbxArea.Location = new System.Drawing.Point(81, 14);
+            this.cbxArea.Location = new System.Drawing.Point(207, 42);
             this.cbxArea.Name = "cbxArea";
-            this.cbxArea.Size = new System.Drawing.Size(132, 20);
+            this.cbxArea.Size = new System.Drawing.Size(182, 20);
             this.cbxArea.TabIndex = 1;
             this.cbxArea.Text = "대분류";
             this.cbxArea.SelectedIndexChanged += new System.EventHandler(this.cbxArea_SelectedIndexChanged);
             // 
-            // label1
+            // lbl_region
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "지역 선택";
+            this.lbl_region.AutoSize = true;
+            this.lbl_region.Location = new System.Drawing.Point(205, 3);
+            this.lbl_region.Name = "lbl_region";
+            this.lbl_region.Size = new System.Drawing.Size(57, 12);
+            this.lbl_region.TabIndex = 3;
+            this.lbl_region.Text = "지역 선택";
             // 
             // cbxMuni
             // 
             this.cbxMuni.FormattingEnabled = true;
-            this.cbxMuni.Location = new System.Drawing.Point(221, 14);
+            this.cbxMuni.Location = new System.Drawing.Point(395, 42);
             this.cbxMuni.Name = "cbxMuni";
-            this.cbxMuni.Size = new System.Drawing.Size(132, 20);
+            this.cbxMuni.Size = new System.Drawing.Size(182, 20);
             this.cbxMuni.TabIndex = 4;
             this.cbxMuni.Text = "소분류";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(544, 50);
+            this.btnSearch.Location = new System.Drawing.Point(1186, 42);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 5;
@@ -91,28 +91,28 @@
             // cbxService2
             // 
             this.cbxService2.FormattingEnabled = true;
-            this.cbxService2.Location = new System.Drawing.Point(221, 52);
+            this.cbxService2.Location = new System.Drawing.Point(791, 42);
             this.cbxService2.Name = "cbxService2";
-            this.cbxService2.Size = new System.Drawing.Size(132, 20);
+            this.cbxService2.Size = new System.Drawing.Size(182, 20);
             this.cbxService2.TabIndex = 8;
             this.cbxService2.Text = "중분류";
             this.cbxService2.SelectedIndexChanged += new System.EventHandler(this.cbxService2_SelectedIndexChanged);
             // 
-            // label2
+            // lbl_service
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "서비스분류";
+            this.lbl_service.AutoSize = true;
+            this.lbl_service.Location = new System.Drawing.Point(601, 4);
+            this.lbl_service.Name = "lbl_service";
+            this.lbl_service.Size = new System.Drawing.Size(65, 12);
+            this.lbl_service.TabIndex = 7;
+            this.lbl_service.Text = "서비스분류";
             // 
             // cbxService1
             // 
             this.cbxService1.FormattingEnabled = true;
-            this.cbxService1.Location = new System.Drawing.Point(81, 52);
+            this.cbxService1.Location = new System.Drawing.Point(603, 42);
             this.cbxService1.Name = "cbxService1";
-            this.cbxService1.Size = new System.Drawing.Size(132, 20);
+            this.cbxService1.Size = new System.Drawing.Size(182, 20);
             this.cbxService1.TabIndex = 6;
             this.cbxService1.Text = "대분류";
             this.cbxService1.SelectedIndexChanged += new System.EventHandler(this.cbxService1_SelectedIndexChanged);
@@ -120,17 +120,17 @@
             // cbxService3
             // 
             this.cbxService3.FormattingEnabled = true;
-            this.cbxService3.Location = new System.Drawing.Point(361, 52);
+            this.cbxService3.Location = new System.Drawing.Point(979, 42);
             this.cbxService3.Name = "cbxService3";
-            this.cbxService3.Size = new System.Drawing.Size(132, 20);
+            this.cbxService3.Size = new System.Drawing.Size(182, 20);
             this.cbxService3.TabIndex = 9;
             this.cbxService3.Text = "소분류";
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(8, 348);
+            this.listView.Location = new System.Drawing.Point(8, 81);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(988, 320);
+            this.listView.Size = new System.Drawing.Size(1253, 587);
             this.listView.TabIndex = 10;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
@@ -140,21 +140,111 @@
             this.imgList.ImageSize = new System.Drawing.Size(16, 16);
             this.imgList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // lbl_language
+            // 
+            this.lbl_language.AutoSize = true;
+            this.lbl_language.Location = new System.Drawing.Point(12, 9);
+            this.lbl_language.Name = "lbl_language";
+            this.lbl_language.Size = new System.Drawing.Size(57, 12);
+            this.lbl_language.TabIndex = 11;
+            this.lbl_language.Text = "언어 선택";
+            // 
+            // cbx_language
+            // 
+            this.cbx_language.FormattingEnabled = true;
+            this.cbx_language.Location = new System.Drawing.Point(14, 42);
+            this.cbx_language.Name = "cbx_language";
+            this.cbx_language.Size = new System.Drawing.Size(182, 20);
+            this.cbx_language.TabIndex = 10;
+            this.cbx_language.SelectedIndexChanged += new System.EventHandler(this.cbx_language_SelectedIndexChanged);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(1186, 12);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear.TabIndex = 12;
+            this.btn_clear.Text = "clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // lbl_main1
+            // 
+            this.lbl_main1.AutoSize = true;
+            this.lbl_main1.Location = new System.Drawing.Point(209, 27);
+            this.lbl_main1.Name = "lbl_main1";
+            this.lbl_main1.Size = new System.Drawing.Size(41, 12);
+            this.lbl_main1.TabIndex = 13;
+            this.lbl_main1.Text = "대분류";
+            // 
+            // lbl_main2
+            // 
+            this.lbl_main2.AutoSize = true;
+            this.lbl_main2.Location = new System.Drawing.Point(605, 27);
+            this.lbl_main2.Name = "lbl_main2";
+            this.lbl_main2.Size = new System.Drawing.Size(41, 12);
+            this.lbl_main2.TabIndex = 14;
+            this.lbl_main2.Text = "대분류";
+            // 
+            // lbl_small1
+            // 
+            this.lbl_small1.AutoSize = true;
+            this.lbl_small1.Location = new System.Drawing.Point(399, 27);
+            this.lbl_small1.Name = "lbl_small1";
+            this.lbl_small1.Size = new System.Drawing.Size(41, 12);
+            this.lbl_small1.TabIndex = 15;
+            this.lbl_small1.Text = "소분류";
+            // 
+            // lbl_middle
+            // 
+            this.lbl_middle.AutoSize = true;
+            this.lbl_middle.Location = new System.Drawing.Point(795, 27);
+            this.lbl_middle.Name = "lbl_middle";
+            this.lbl_middle.Size = new System.Drawing.Size(41, 12);
+            this.lbl_middle.TabIndex = 16;
+            this.lbl_middle.Text = "중분류";
+            // 
+            // lbl_small2
+            // 
+            this.lbl_small2.AutoSize = true;
+            this.lbl_small2.Location = new System.Drawing.Point(982, 27);
+            this.lbl_small2.Name = "lbl_small2";
+            this.lbl_small2.Size = new System.Drawing.Size(41, 12);
+            this.lbl_small2.TabIndex = 17;
+            this.lbl_small2.Text = "소분류";
+            // 
+            // lbl_lang
+            // 
+            this.lbl_lang.AutoSize = true;
+            this.lbl_lang.Location = new System.Drawing.Point(16, 27);
+            this.lbl_lang.Name = "lbl_lang";
+            this.lbl_lang.Size = new System.Drawing.Size(61, 12);
+            this.lbl_lang.TabIndex = 18;
+            this.lbl_lang.Text = "Language";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 680);
+            this.ClientSize = new System.Drawing.Size(1273, 680);
             this.Controls.Add(this.listView);
+            this.Controls.Add(this.lbl_lang);
+            this.Controls.Add(this.lbl_small2);
+            this.Controls.Add(this.lbl_middle);
+            this.Controls.Add(this.lbl_small1);
+            this.Controls.Add(this.lbl_main2);
+            this.Controls.Add(this.lbl_main1);
+            this.Controls.Add(this.btn_clear);
+            this.Controls.Add(this.lbl_language);
+            this.Controls.Add(this.cbx_language);
             this.Controls.Add(this.cbxService3);
             this.Controls.Add(this.cbxService2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_service);
             this.Controls.Add(this.cbxService1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbxMuni);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_region);
             this.Controls.Add(this.cbxArea);
-            this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -164,18 +254,25 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cbxArea;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_region;
         private System.Windows.Forms.ComboBox cbxMuni;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cbxService2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_service;
         private System.Windows.Forms.ComboBox cbxService1;
         private System.Windows.Forms.ComboBox cbxService3;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.Label lbl_language;
+        private System.Windows.Forms.ComboBox cbx_language;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Label lbl_main1;
+        private System.Windows.Forms.Label lbl_main2;
+        private System.Windows.Forms.Label lbl_small1;
+        private System.Windows.Forms.Label lbl_middle;
+        private System.Windows.Forms.Label lbl_small2;
+        private System.Windows.Forms.Label lbl_lang;
     }
 }
 
