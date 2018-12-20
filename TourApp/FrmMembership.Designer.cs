@@ -106,6 +106,7 @@
             this.tbPassword.PasswordChar = '●';
             this.tbPassword.Size = new System.Drawing.Size(200, 21);
             this.tbPassword.TabIndex = 17;
+            this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
             // tbID
             // 
@@ -113,6 +114,7 @@
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(200, 21);
             this.tbID.TabIndex = 16;
+            this.tbID.TextChanged += new System.EventHandler(this.tbID_TextChanged);
             // 
             // lblPassword
             // 

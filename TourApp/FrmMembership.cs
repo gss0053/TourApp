@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -202,6 +203,28 @@ namespace TourApp
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tbID_TextChanged(object sender, EventArgs e)
+        {
+            // ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,13}$
+            string patternID = "^(?=.*?[A-Za-z])(?=.*?[0-9]).{5,13}$";
+            if (!Regex.IsMatch(tbID.Text,patternID))    // 패턴에 안맞을시에 메세지 박스뜸
+            {
+                // 체크박스 추가하면됨
+                MessageBox.Show("Test");
+            }
+        }
+
+        private void tbPassword_TextChanged(object sender, EventArgs e)
+        {
+            //string patternPASS = "^[~`!@#$%\\^&*()A-Za-z0-9+]{8,13}$";
+            string patternPASS = "^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,13}$";
+            if (!Regex.IsMatch(tbPassword.Text, patternPASS)) // 패턴에 안맞을시에 메세지 박스뜸
+            {
+                // 체크박스 추가하면됨
+                MessageBox.Show("Test");
+            }
         }
     }
 }
