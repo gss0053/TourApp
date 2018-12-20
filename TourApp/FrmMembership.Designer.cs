@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMembership));
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnRegist = new System.Windows.Forms.Button();
@@ -42,7 +41,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
-            this.pbQ = new System.Windows.Forms.PictureBox();
             this.lblValid = new System.Windows.Forms.Label();
             this.lblValid1 = new System.Windows.Forms.Label();
             this.lblValid2 = new System.Windows.Forms.Label();
@@ -62,14 +60,15 @@
             this.chkPhone = new System.Windows.Forms.CheckBox();
             this.lblNameRule = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQ)).BeginInit();
             this.SuspendLayout();
             // 
             // pbClose
             // 
-            this.pbClose.Location = new System.Drawing.Point(399, 1);
+            this.pbClose.Image = global::TourApp.Properties.Resources.Button_Close_icon;
+            this.pbClose.Location = new System.Drawing.Point(408, 1);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(53, 50);
+            this.pbClose.Size = new System.Drawing.Size(44, 43);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -189,15 +188,6 @@
             this.lblPhone.TabIndex = 25;
             this.lblPhone.Text = "휴대전화번호";
             this.lblPhone.Visible = false;
-            // 
-            // pbQ
-            // 
-            this.pbQ.Image = ((System.Drawing.Image)(resources.GetObject("pbQ.Image")));
-            this.pbQ.Location = new System.Drawing.Point(12, 379);
-            this.pbQ.Name = "pbQ";
-            this.pbQ.Size = new System.Drawing.Size(50, 50);
-            this.pbQ.TabIndex = 27;
-            this.pbQ.TabStop = false;
             // 
             // lblValid
             // 
@@ -420,7 +410,6 @@
             this.Controls.Add(this.lblValid2);
             this.Controls.Add(this.lblValid1);
             this.Controls.Add(this.lblValid);
-            this.Controls.Add(this.pbQ);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
@@ -439,7 +428,6 @@
             this.Text = "로그인";
             this.Load += new System.EventHandler(this.FrmMembership_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,7 +447,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label lblPhone;
-        private System.Windows.Forms.PictureBox pbQ;
         private System.Windows.Forms.Label lblValid;
         private System.Windows.Forms.Label lblValid1;
         private System.Windows.Forms.Label lblValid2;

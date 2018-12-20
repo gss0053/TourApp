@@ -66,14 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="FrmResultClick.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmResultClick.Designer.cs">
       <DependentUpon>FrmResultClick.cs</DependentUpon>
     </Compile>
-
     <Compile Include="FrmMembership.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="json1.json" />
     <None Include="packages.config" />
@@ -139,6 +138,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Membership.mdf</DependentUpon>
     </Content>
+    <None Include="Properties\Button-Close-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
