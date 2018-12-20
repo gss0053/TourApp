@@ -16,13 +16,13 @@ namespace TourApp
     {
         List<Membership> lstMembership;
         DBConnect dbconnect = new DBConnect();
-        public FrmMembership()
+        List<Language> languages;
+
+        public FrmMembership(List<Membership> lstMembership, List<Language> languages)
         {
             InitializeComponent();
-        }
-        public FrmMembership(List<Membership> lstMembership) : this()
-        {
             this.lstMembership = lstMembership;
+            this.languages = languages;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -200,6 +200,9 @@ namespace TourApp
 
         private void FrmMembership_Load(object sender, EventArgs e)
         {
+
+            Frm_Language_Select fls = new Frm_Language_Select(languages);
+            fls.ShowDialog();
             dbconnect.ExcuteSelect(lstMembership);
         }
 

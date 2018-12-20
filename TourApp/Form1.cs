@@ -19,6 +19,7 @@ namespace TourApp
 {
     public partial class Form1 : Form
     {
+        int lang_index;
         public static List<Membership> lstMembership = new List<Membership>();
         private JObject jsonObj;
         private JObject jsonCat1;
@@ -48,7 +49,8 @@ namespace TourApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            FrmMembership fms = new FrmMembership(lstMembership);
+            Language_List();
+            FrmMembership fms = new FrmMembership(lstMembership,languages);
             fms.ShowDialog();
 
             this.Text = "한국 국문관광정보 프로그램";
@@ -63,7 +65,28 @@ namespace TourApp
             //SpnService 서어(스페인어)
             //RusService 노어(러시아어)
 
-            languages.Clear();
+            Basic();
+
+        }
+
+        private void Basic()
+        {
+            cbx_language.Items.Clear();
+            cbxArea.Items.Clear();
+            cbxMuni.Items.Clear();
+            cbxService1.Items.Clear();
+            cbxService2.Items.Clear();
+            cbxService3.Items.Clear();
+
+            foreach (var item in languages)
+            {
+                cbx_language.Items.Add(item.KorName);
+            }
+            cbx_language.SelectedIndex = 0;
+        }
+
+        private void Language_List()
+        {
             languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류"));
             languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category"));
             languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"));
@@ -73,12 +96,6 @@ namespace TourApp
             languages.Add(new Language("FreService", "Le français(프랑스어)", "Sélectionnez la langue", "Sélectionnez une région", "Classification de service", "Catégorie majeure", "Classe moyenne", "Petite catégorie"));
             languages.Add(new Language("SpnService", "Español(스페인어)", "Seleccionar idioma", "Seleccione region", "Clasificación de servicios", "Catégorie majeure", "Clase media", "Categoría pequeña"));
             languages.Add(new Language("RusService", "русский(러시아어)", "Выберите язык", "Выберите регион", "Сервисная классификация", "Основная категория", "Средний класс", "Малая категория"));
-            foreach (var item in languages)
-            {
-                cbx_language.Items.Add(item.KorName);
-            }
-            cbx_language.SelectedIndex = 0;
-
         }
 
         private void GetObject(JArray itemsArr, List<JsonSource> lst, ComboBox cbx)
@@ -397,18 +414,17 @@ namespace TourApp
         }
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            //    cbxArea.Text = cbxService1.Text = "대분류";
-            //    cbxMuni.Text = cbxService3.Text = "소분류";
-            //    cbxService2.Text = "중분류";
-            cbx_language.Items.Clear();
-            cbxArea.Items.Clear();
-            cbxMuni.Items.Clear();
-            cbxService1.Items.Clear();
-            cbxService2.Items.Clear();
-            cbxService3.Items.Clear();
+            //cbx_language.Items.Clear();
+            //cbxArea.Items.Clear();
+            //cbxMuni.Items.Clear();
+            //cbxService1.Items.Clear();
+            //cbxService2.Items.Clear();
+            //cbxService3.Items.Clear();
 
-            Form1_Load(null, null);
-            //cbxMuni.Text = cbxService3.Text 
+            Basic();
+
+            //Form1_Load(null, null);
+
         }
 
         //다국어 바뀔때

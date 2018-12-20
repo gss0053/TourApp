@@ -66,19 +66,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="FrmResultClick.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmResultClick.Designer.cs">
       <DependentUpon>FrmResultClick.cs</DependentUpon>
     </Compile>
-
     <Compile Include="FrmMembership.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMembership.Designer.cs">
       <DependentUpon>FrmMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Language_Select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Language_Select.Designer.cs">
+      <DependentUpon>Frm_Language_Select.cs</DependentUpon>
     </Compile>
     <Compile Include="JsonSource.cs" />
     <Compile Include="DBConnect.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMembership.resx">
       <DependentUpon>FrmMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Language_Select.resx">
+      <DependentUpon>Frm_Language_Select.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

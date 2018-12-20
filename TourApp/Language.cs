@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourApp
 {
-    class Language
+    public class Language
     {
         private string engName;
 
