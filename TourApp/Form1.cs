@@ -18,6 +18,7 @@ namespace TourApp
 {
     public partial class Form1 : Form
     {
+        public static List<Membership> lstMembership = new List<Membership>();
         private JObject jsonObj;
         private JsonSource source;
         List<JsonSource> areaList;
@@ -33,6 +34,9 @@ namespace TourApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            FrmMembership fms = new FrmMembership(lstMembership);
+            fms.ShowDialog();
+
             this.Text = "한국 국문관광정보 프로그램";
 
             // json얻어오기
