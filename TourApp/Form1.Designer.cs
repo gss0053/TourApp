@@ -53,7 +53,7 @@
             // cbxArea
             // 
             this.cbxArea.FormattingEnabled = true;
-            this.cbxArea.Location = new System.Drawing.Point(207, 42);
+            this.cbxArea.Location = new System.Drawing.Point(205, 68);
             this.cbxArea.Name = "cbxArea";
             this.cbxArea.Size = new System.Drawing.Size(182, 20);
             this.cbxArea.TabIndex = 1;
@@ -63,7 +63,7 @@
             // lbl_region
             // 
             this.lbl_region.AutoSize = true;
-            this.lbl_region.Location = new System.Drawing.Point(205, 3);
+            this.lbl_region.Location = new System.Drawing.Point(203, 27);
             this.lbl_region.Name = "lbl_region";
             this.lbl_region.Size = new System.Drawing.Size(57, 12);
             this.lbl_region.TabIndex = 3;
@@ -72,7 +72,7 @@
             // cbxMuni
             // 
             this.cbxMuni.FormattingEnabled = true;
-            this.cbxMuni.Location = new System.Drawing.Point(395, 42);
+            this.cbxMuni.Location = new System.Drawing.Point(394, 68);
             this.cbxMuni.Name = "cbxMuni";
             this.cbxMuni.Size = new System.Drawing.Size(182, 20);
             this.cbxMuni.TabIndex = 4;
@@ -80,7 +80,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(1186, 42);
+            this.btnSearch.Location = new System.Drawing.Point(1186, 68);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 5;
@@ -91,7 +91,7 @@
             // cbxService2
             // 
             this.cbxService2.FormattingEnabled = true;
-            this.cbxService2.Location = new System.Drawing.Point(791, 42);
+            this.cbxService2.Location = new System.Drawing.Point(791, 68);
             this.cbxService2.Name = "cbxService2";
             this.cbxService2.Size = new System.Drawing.Size(182, 20);
             this.cbxService2.TabIndex = 8;
@@ -101,7 +101,7 @@
             // lbl_service
             // 
             this.lbl_service.AutoSize = true;
-            this.lbl_service.Location = new System.Drawing.Point(601, 4);
+            this.lbl_service.Location = new System.Drawing.Point(601, 27);
             this.lbl_service.Name = "lbl_service";
             this.lbl_service.Size = new System.Drawing.Size(65, 12);
             this.lbl_service.TabIndex = 7;
@@ -110,7 +110,7 @@
             // cbxService1
             // 
             this.cbxService1.FormattingEnabled = true;
-            this.cbxService1.Location = new System.Drawing.Point(603, 42);
+            this.cbxService1.Location = new System.Drawing.Point(603, 68);
             this.cbxService1.Name = "cbxService1";
             this.cbxService1.Size = new System.Drawing.Size(182, 20);
             this.cbxService1.TabIndex = 6;
@@ -120,7 +120,7 @@
             // cbxService3
             // 
             this.cbxService3.FormattingEnabled = true;
-            this.cbxService3.Location = new System.Drawing.Point(979, 42);
+            this.cbxService3.Location = new System.Drawing.Point(979, 68);
             this.cbxService3.Name = "cbxService3";
             this.cbxService3.Size = new System.Drawing.Size(182, 20);
             this.cbxService3.TabIndex = 9;
@@ -128,11 +128,12 @@
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(8, 81);
+            this.listView.Location = new System.Drawing.Point(8, 102);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(1253, 587);
+            this.listView.Size = new System.Drawing.Size(1253, 566);
             this.listView.TabIndex = 10;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.Click += new System.EventHandler(this.listView_Click);
             // 
             // imgList
             // 
@@ -143,7 +144,7 @@
             // lbl_language
             // 
             this.lbl_language.AutoSize = true;
-            this.lbl_language.Location = new System.Drawing.Point(12, 9);
+            this.lbl_language.Location = new System.Drawing.Point(12, 27);
             this.lbl_language.Name = "lbl_language";
             this.lbl_language.Size = new System.Drawing.Size(57, 12);
             this.lbl_language.TabIndex = 11;
@@ -152,7 +153,7 @@
             // cbx_language
             // 
             this.cbx_language.FormattingEnabled = true;
-            this.cbx_language.Location = new System.Drawing.Point(14, 42);
+            this.cbx_language.Location = new System.Drawing.Point(16, 68);
             this.cbx_language.Name = "cbx_language";
             this.cbx_language.Size = new System.Drawing.Size(182, 20);
             this.cbx_language.TabIndex = 10;
@@ -160,7 +161,7 @@
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(1186, 12);
+            this.btn_clear.Location = new System.Drawing.Point(1186, 38);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(75, 23);
             this.btn_clear.TabIndex = 12;
@@ -171,7 +172,7 @@
             // lbl_main1
             // 
             this.lbl_main1.AutoSize = true;
-            this.lbl_main1.Location = new System.Drawing.Point(209, 27);
+            this.lbl_main1.Location = new System.Drawing.Point(205, 53);
             this.lbl_main1.Name = "lbl_main1";
             this.lbl_main1.Size = new System.Drawing.Size(41, 12);
             this.lbl_main1.TabIndex = 13;
@@ -180,7 +181,7 @@
             // lbl_main2
             // 
             this.lbl_main2.AutoSize = true;
-            this.lbl_main2.Location = new System.Drawing.Point(605, 27);
+            this.lbl_main2.Location = new System.Drawing.Point(603, 53);
             this.lbl_main2.Name = "lbl_main2";
             this.lbl_main2.Size = new System.Drawing.Size(41, 12);
             this.lbl_main2.TabIndex = 14;
@@ -189,7 +190,7 @@
             // lbl_small1
             // 
             this.lbl_small1.AutoSize = true;
-            this.lbl_small1.Location = new System.Drawing.Point(399, 27);
+            this.lbl_small1.Location = new System.Drawing.Point(394, 53);
             this.lbl_small1.Name = "lbl_small1";
             this.lbl_small1.Size = new System.Drawing.Size(41, 12);
             this.lbl_small1.TabIndex = 15;
@@ -198,7 +199,7 @@
             // lbl_middle
             // 
             this.lbl_middle.AutoSize = true;
-            this.lbl_middle.Location = new System.Drawing.Point(795, 27);
+            this.lbl_middle.Location = new System.Drawing.Point(791, 53);
             this.lbl_middle.Name = "lbl_middle";
             this.lbl_middle.Size = new System.Drawing.Size(41, 12);
             this.lbl_middle.TabIndex = 16;
@@ -207,7 +208,7 @@
             // lbl_small2
             // 
             this.lbl_small2.AutoSize = true;
-            this.lbl_small2.Location = new System.Drawing.Point(982, 27);
+            this.lbl_small2.Location = new System.Drawing.Point(980, 53);
             this.lbl_small2.Name = "lbl_small2";
             this.lbl_small2.Size = new System.Drawing.Size(41, 12);
             this.lbl_small2.TabIndex = 17;
@@ -216,7 +217,7 @@
             // lbl_lang
             // 
             this.lbl_lang.AutoSize = true;
-            this.lbl_lang.Location = new System.Drawing.Point(16, 27);
+            this.lbl_lang.Location = new System.Drawing.Point(16, 53);
             this.lbl_lang.Name = "lbl_lang";
             this.lbl_lang.Size = new System.Drawing.Size(61, 12);
             this.lbl_lang.TabIndex = 18;
