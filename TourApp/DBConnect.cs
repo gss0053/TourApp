@@ -58,6 +58,26 @@ namespace TourApp
             }
         }
 
+        public void ExecuteInsert(string[] memberinfo)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
+            con.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = con;
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.CommandText = "Insert";
+
+            comm.Parameters.AddWithValue("@ID", memberinfo[0]);
+            comm.Parameters.AddWithValue("@PASSWORD", memberinfo[1]);
+            comm.Parameters.AddWithValue("@NAME", memberinfo[2]);
+            comm.Parameters.AddWithValue("@PHONE", memberinfo[3]);
+            comm.Parameters.AddWithValue("@BIRTHDAY", memberinfo[4]);
+
+            comm.ExecuteNonQuery();
+
+            con.Close();
+        }
+
         public void ExcuteSelect(List<Membership> lstMembership)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);

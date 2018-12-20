@@ -51,17 +51,25 @@ namespace TourApp
             lblPwdRule.Visible = true;
             lblValid2.Location = new Point(55, 93);
             lblValid2.Visible = true;
+            chkID.Location = new Point(399, 34);
+            chkID.Visible = true;
+            chkPwd.Location = new Point(399, 94);
+            chkPwd.Visible = true;
 
             lblChk.Location = new Point(31, 153);
             tbChk.Location = new Point(183, 150);
             lblValid3.Location = new Point(14, 153);
             lblValid3.Visible = true;
+            chkPwdChk.Location = new Point(399, 154);
+            chkPwdChk.Visible = true;
 
             lblName.Location = new Point(120, 213);
             lblName.Visible = true;
             tbName.Location = new Point(183, 210);
             tbName.Visible = true;
             tbName.Enabled = true;
+            lblNameRule.Location = new Point(182, 236);
+            lblNameRule.Visible = true;
 
             lblPhone.Location = new Point(72, 273);
             lblPhone.Visible = true;
@@ -70,6 +78,8 @@ namespace TourApp
             mtbPhone.Enabled = true;
             lblValid4.Location = new Point(55, 273);
             lblValid4.Visible = true;
+            chkPhone.Location = new Point(399, 274);
+            chkPhone.Visible = true;
 
             lblBirth.Location = new Point(94, 333);
             lblBirth.Visible = true;
@@ -113,15 +123,8 @@ namespace TourApp
                 day = "0" + cbDay.Text;
             }
             string birthday = cbYear.Text + month + day;
-            SqlParameter[] insertparams;
-            insertparams = new SqlParameter[5];
-            insertparams[0] = new SqlParameter("@ID", tbID.Text);
-            insertparams[1] = new SqlParameter("@PASSWORD", tbPassword.Text);
-            insertparams[2] = new SqlParameter("@NAME", tbName.Text);
-            insertparams[3] = new SqlParameter("@PHONE", mtbPhone.Text);
-            insertparams[4] = new SqlParameter("@BIRTHDAY", birthday);
-
-            dbconnect.ExcuteInsert("Insert", insertparams);
+            string[] memberinfo = new string[5] { tbID.Text, tbPassword.Text, tbName.Text, mtbPhone.Text, birthday };
+            dbconnect.ExecuteInsert(memberinfo);
         }
 
         private void ControlCB()

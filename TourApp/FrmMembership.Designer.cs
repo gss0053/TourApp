@@ -56,6 +56,11 @@
             this.lblIDValid = new System.Windows.Forms.Label();
             this.lblIDRule = new System.Windows.Forms.Label();
             this.lblPwdRule = new System.Windows.Forms.Label();
+            this.chkID = new System.Windows.Forms.CheckBox();
+            this.chkPwd = new System.Windows.Forms.CheckBox();
+            this.chkPwdChk = new System.Windows.Forms.CheckBox();
+            this.chkPhone = new System.Windows.Forms.CheckBox();
+            this.lblNameRule = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQ)).BeginInit();
             this.SuspendLayout();
@@ -335,11 +340,71 @@
             this.lblPwdRule.Text = "*(8~13)자리 영문,숫자,특수문자 동시 포함";
             this.lblPwdRule.Visible = false;
             // 
+            // chkID
+            // 
+            this.chkID.AutoSize = true;
+            this.chkID.Enabled = false;
+            this.chkID.Location = new System.Drawing.Point(390, 110);
+            this.chkID.Name = "chkID";
+            this.chkID.Size = new System.Drawing.Size(15, 14);
+            this.chkID.TabIndex = 42;
+            this.chkID.UseVisualStyleBackColor = true;
+            this.chkID.Visible = false;
+            // 
+            // chkPwd
+            // 
+            this.chkPwd.AutoSize = true;
+            this.chkPwd.Enabled = false;
+            this.chkPwd.Location = new System.Drawing.Point(390, 132);
+            this.chkPwd.Name = "chkPwd";
+            this.chkPwd.Size = new System.Drawing.Size(15, 14);
+            this.chkPwd.TabIndex = 43;
+            this.chkPwd.UseVisualStyleBackColor = true;
+            this.chkPwd.Visible = false;
+            // 
+            // chkPwdChk
+            // 
+            this.chkPwdChk.AutoSize = true;
+            this.chkPwdChk.Enabled = false;
+            this.chkPwdChk.Location = new System.Drawing.Point(389, 154);
+            this.chkPwdChk.Name = "chkPwdChk";
+            this.chkPwdChk.Size = new System.Drawing.Size(15, 14);
+            this.chkPwdChk.TabIndex = 44;
+            this.chkPwdChk.UseVisualStyleBackColor = true;
+            this.chkPwdChk.Visible = false;
+            // 
+            // chkPhone
+            // 
+            this.chkPhone.AutoSize = true;
+            this.chkPhone.Enabled = false;
+            this.chkPhone.Location = new System.Drawing.Point(389, 176);
+            this.chkPhone.Name = "chkPhone";
+            this.chkPhone.Size = new System.Drawing.Size(15, 14);
+            this.chkPhone.TabIndex = 45;
+            this.chkPhone.UseVisualStyleBackColor = true;
+            this.chkPhone.Visible = false;
+            // 
+            // lblNameRule
+            // 
+            this.lblNameRule.AutoSize = true;
+            this.lblNameRule.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNameRule.Location = new System.Drawing.Point(183, 120);
+            this.lblNameRule.Name = "lblNameRule";
+            this.lblNameRule.Size = new System.Drawing.Size(96, 11);
+            this.lblNameRule.TabIndex = 46;
+            this.lblNameRule.Text = "*50자 이내의 문자";
+            this.lblNameRule.Visible = false;
+            // 
             // FrmMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 700);
+            this.Controls.Add(this.lblNameRule);
+            this.Controls.Add(this.chkPhone);
+            this.Controls.Add(this.chkPwdChk);
+            this.Controls.Add(this.chkPwd);
+            this.Controls.Add(this.chkID);
             this.Controls.Add(this.lblPwdRule);
             this.Controls.Add(this.lblIDRule);
             this.Controls.Add(this.lblIDValid);
@@ -406,5 +471,10 @@
         private System.Windows.Forms.Label lblIDValid;
         private System.Windows.Forms.Label lblIDRule;
         private System.Windows.Forms.Label lblPwdRule;
+        private System.Windows.Forms.CheckBox chkID;
+        private System.Windows.Forms.CheckBox chkPwd;
+        private System.Windows.Forms.CheckBox chkPwdChk;
+        private System.Windows.Forms.CheckBox chkPhone;
+        private System.Windows.Forms.Label lblNameRule;
     }
 }
