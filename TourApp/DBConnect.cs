@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,24 @@ namespace TourApp
                 }
                 return result;
             }
+        }
+
+        public void ExcuteSelect(List<Membership> lstMembership)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
+            con.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = con;
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.CommandText = "Select";
+
+            SqlDataReader sr = comm.ExecuteReader();
+
+            while (sr.Read())
+            {
+                lstMembership.Add(new Membership(sr[0].ToString(), sr[1].ToString(), sr[2].ToString(), sr[3].ToString(), sr[4].ToString()));
+            }
+            con.Close();
         }
     }
 }

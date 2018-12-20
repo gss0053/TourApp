@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 680);
+            this.ClientSize = new System.Drawing.Size(1275, 680);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.lbl_lang);
             this.Controls.Add(this.lbl_small2);
@@ -254,6 +254,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.ComboBox cbxArea;
         private System.Windows.Forms.Label lbl_region;
         private System.Windows.Forms.ComboBox cbxMuni;
@@ -273,6 +274,7 @@
         private System.Windows.Forms.Label lbl_middle;
         private System.Windows.Forms.Label lbl_small2;
         private System.Windows.Forms.Label lbl_lang;
+
     }
 }
 
