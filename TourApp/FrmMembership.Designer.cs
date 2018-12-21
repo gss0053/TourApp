@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnRegist = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -59,19 +58,13 @@
             this.chkPwdChk = new System.Windows.Forms.CheckBox();
             this.chkPhone = new System.Windows.Forms.CheckBox();
             this.lblNameRule = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbClose
-            // 
-            this.pbClose.Image = global::TourApp.Properties.Resources.Button_Close_icon;
-            this.pbClose.Location = new System.Drawing.Point(408, 1);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(44, 43);
-            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbClose.TabIndex = 7;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnFind
             // 
@@ -387,11 +380,41 @@
             this.lblNameRule.Text = "*50자 이내의 문자";
             this.lblNameRule.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(92, 476);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(41, 41);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 48;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(74, 446);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(311, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbClose
+            // 
+            this.pbClose.Location = new System.Drawing.Point(408, 1);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(44, 43);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 7;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // FrmMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 700);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblNameRule);
             this.Controls.Add(this.chkPhone);
             this.Controls.Add(this.chkPwdChk);
@@ -427,6 +450,8 @@
             this.Name = "FrmMembership";
             this.Text = "로그인";
             this.Load += new System.EventHandler(this.FrmMembership_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -465,5 +490,7 @@
         private System.Windows.Forms.CheckBox chkPwdChk;
         private System.Windows.Forms.CheckBox chkPhone;
         private System.Windows.Forms.Label lblNameRule;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
