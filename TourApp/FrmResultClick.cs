@@ -41,7 +41,7 @@ namespace TourApp
             }
             else
             {
-                pbx.ImageLocation = @"C:\Users\GD1-20\source\repos\TourApp\TourApp\Resources\no.png";
+                pbx.ImageLocation = Application.StartupPath + @"\images\no.jpg";
             }
 
             txtOverview.Enabled = false;
