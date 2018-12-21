@@ -25,6 +25,15 @@ namespace TourApp
         private void Frm_Language_Select_Load(object sender, EventArgs e)
         {
             pictureBox1.ImageLocation = Application.StartupPath + @"\images\icon.png";
+            pbxKor.ImageLocation = Application.StartupPath + @"\images\kor.png";
+            pbxChi1.ImageLocation = Application.StartupPath + @"\images\chi.png";
+            pbxChi2.ImageLocation = Application.StartupPath + @"\images\chi.png";
+            pbxEng.ImageLocation = Application.StartupPath + @"\images\eng.jpg";
+            pbxJap.ImageLocation = Application.StartupPath + @"\images\jap.png";
+            pbxDeu.ImageLocation = Application.StartupPath + @"\images\dot.png";
+            pbxFra.ImageLocation = Application.StartupPath + @"\images\fra.png";
+            pbxRus.ImageLocation = Application.StartupPath + @"\images\rus.png";
+            pbxSpa.ImageLocation = Application.StartupPath + @"\images\spa.png";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

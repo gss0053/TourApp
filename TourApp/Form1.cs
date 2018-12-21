@@ -526,7 +526,7 @@ namespace TourApp
             string addr1 = (item.Property("addr1") != null) ? item.GetValue("addr1").ToString() : "X";
             string overview = (item.Property("overview") != null) ? item.GetValue("overview").ToString().Replace("<br>", "").Replace("</br>", "").Replace("<br />", "").Replace("<font>", "").Replace("</font>", "") : "X";
             string tel = (item.Property("tel") != null) ? item.GetValue("tel").ToString() : "X";
-            string title = (item.Property("title") != null) ? item.GetValue("title").ToString() : "X";
+            string title = (item.Property("title") != null) ? item.GetValue("title").ToString().Replace("<br/>", "") : "X";
             string homepageNode = (item.Property("homepage") != null) ? item.GetValue("homepage").ToString() : "";
             string homepage = "";
             if (!string.IsNullOrEmpty(homepageNode))
@@ -534,7 +534,7 @@ namespace TourApp
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(homepageNode);
                 HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
-                homepage = root.InnerText.Replace("<br>", "").Replace("</br>", "").Replace("<br />", ""); 
+                homepage = root.InnerText; 
             }
             else
             {
