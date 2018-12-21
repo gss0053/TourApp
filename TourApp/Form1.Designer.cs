@@ -48,6 +48,12 @@
             this.lbl_middle = new System.Windows.Forms.Label();
             this.lbl_small2 = new System.Windows.Forms.Label();
             this.lbl_lang = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.lblPage = new System.Windows.Forms.Label();
+            this.btnMostNext = new System.Windows.Forms.Button();
+            this.btnMostPrev = new System.Windows.Forms.Button();
+            this.lblSearchCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbxArea
@@ -63,9 +69,7 @@
             // lbl_region
             // 
             this.lbl_region.AutoSize = true;
-
             this.lbl_region.Location = new System.Drawing.Point(203, 27);
-
             this.lbl_region.Name = "lbl_region";
             this.lbl_region.Size = new System.Drawing.Size(57, 12);
             this.lbl_region.TabIndex = 3;
@@ -79,6 +83,7 @@
             this.cbxMuni.Size = new System.Drawing.Size(182, 20);
             this.cbxMuni.TabIndex = 4;
             this.cbxMuni.Text = "소분류";
+            this.cbxMuni.SelectedIndexChanged += new System.EventHandler(this.cbxMuni_SelectedIndexChanged);
             // 
             // btnSearch
             // 
@@ -103,9 +108,7 @@
             // lbl_service
             // 
             this.lbl_service.AutoSize = true;
-
             this.lbl_service.Location = new System.Drawing.Point(601, 27);
-
             this.lbl_service.Name = "lbl_service";
             this.lbl_service.Size = new System.Drawing.Size(65, 12);
             this.lbl_service.TabIndex = 7;
@@ -129,12 +132,13 @@
             this.cbxService3.Size = new System.Drawing.Size(182, 20);
             this.cbxService3.TabIndex = 9;
             this.cbxService3.Text = "소분류";
+            this.cbxService3.SelectedIndexChanged += new System.EventHandler(this.cbxService3_SelectedIndexChanged);
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(8, 102);
+            this.listView.Location = new System.Drawing.Point(8, 153);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(1253, 566);
+            this.listView.Size = new System.Drawing.Size(1253, 515);
             this.listView.TabIndex = 10;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.Click += new System.EventHandler(this.listView_Click);
@@ -169,7 +173,7 @@
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(75, 23);
             this.btn_clear.TabIndex = 12;
-            this.btn_clear.Text = "clear";
+            this.btn_clear.Text = "CLEAR";
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
@@ -227,11 +231,73 @@
             this.lbl_lang.TabIndex = 18;
             this.lbl_lang.Text = "Language";
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(1175, 124);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 23);
+            this.btnNext.TabIndex = 19;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Location = new System.Drawing.Point(1040, 124);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(28, 23);
+            this.btnPrev.TabIndex = 20;
+            this.btnPrev.Text = "<";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(1101, 129);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(0, 12);
+            this.lblPage.TabIndex = 21;
+            // 
+            // btnMostNext
+            // 
+            this.btnMostNext.Location = new System.Drawing.Point(1209, 124);
+            this.btnMostNext.Name = "btnMostNext";
+            this.btnMostNext.Size = new System.Drawing.Size(36, 23);
+            this.btnMostNext.TabIndex = 22;
+            this.btnMostNext.Text = ">>";
+            this.btnMostNext.UseVisualStyleBackColor = true;
+            this.btnMostNext.Click += new System.EventHandler(this.btnMostNext_Click);
+            // 
+            // btnMostPrev
+            // 
+            this.btnMostPrev.Location = new System.Drawing.Point(998, 124);
+            this.btnMostPrev.Name = "btnMostPrev";
+            this.btnMostPrev.Size = new System.Drawing.Size(36, 23);
+            this.btnMostPrev.TabIndex = 23;
+            this.btnMostPrev.Text = "<<";
+            this.btnMostPrev.UseVisualStyleBackColor = true;
+            this.btnMostPrev.Click += new System.EventHandler(this.btnMostPrev_Click);
+            // 
+            // lblSearchCount
+            // 
+            this.lblSearchCount.AutoSize = true;
+            this.lblSearchCount.Location = new System.Drawing.Point(794, 129);
+            this.lblSearchCount.Name = "lblSearchCount";
+            this.lblSearchCount.Size = new System.Drawing.Size(0, 12);
+            this.lblSearchCount.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 680);
+            this.Controls.Add(this.lblSearchCount);
+            this.Controls.Add(this.btnMostPrev);
+            this.Controls.Add(this.btnMostNext);
+            this.Controls.Add(this.lblPage);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.lbl_lang);
             this.Controls.Add(this.lbl_small2);
@@ -279,7 +345,12 @@
         private System.Windows.Forms.Label lbl_middle;
         private System.Windows.Forms.Label lbl_small2;
         private System.Windows.Forms.Label lbl_lang;
-
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Label lblPage;
+        private System.Windows.Forms.Button btnMostNext;
+        private System.Windows.Forms.Button btnMostPrev;
+        private System.Windows.Forms.Label lblSearchCount;
     }
 }
 
