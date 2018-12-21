@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using HtmlAgilityPack;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +47,7 @@ namespace TourApp
             cat3List = new List<JsonSource>();
             resultList = new List<Result>();
             languages = new List<Language>();
+            MessageBox.Show(Application.ExecutablePath/*.Substring(0, Application.StartupPath.Length - 21) + @"Resource\no.png"*/); //21
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -141,6 +143,13 @@ namespace TourApp
 
             
         }
+
+        private string GetPath(string language, string apiKind)
+        {
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest" + "&_type=json" + "&contentId=" + resultList[listView.SelectedItems[0].Index].Contentid + "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y";
+            return path;
+        }
+
 
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -302,9 +311,18 @@ namespace TourApp
             listView.Items.Clear();
             imgList.Images.Clear();
             resultList.Clear();
-            path = GetPath(languages[cbx_language.SelectedIndex].EngName, "areaBasedList", "15");
-            jsonObj = GetJson(path);
-            var itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            path = GetPath(languages[cbx_language.SelectedIndex].EngName, "areaBasedList", "20");
+            JArray itemsArr = null;
+            try
+            {
+                jsonObj = GetJson(path);
+                itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Not Found Data", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             foreach (JObject item in itemsArr)
             {
                 Result result = new Result();
@@ -384,6 +402,7 @@ namespace TourApp
                 ListViewItem li;
                 string title = result.Title;
                 listView.LargeImageList = imgList;
+                Image noImage = Image.FromFile(Application.StartupPath + @"\images\no.jpg");
                 if (item.Property("firstimage") != null)
                 {
                     result.Firstimage = item.GetValue("firstimage").ToString(); // 썸네일
@@ -394,36 +413,30 @@ namespace TourApp
                     imgList.ImageSize = new Size(256, 256);
                     imgList.ColorDepth = ColorDepth.Depth32Bit;
                     imgList.Images.Add(title, file1);
-
                     li = new ListViewItem(title);
+                    
                     li.ImageKey = title;
                     listView.Items.Add(li);
                 }
                 else
                 {
                     li = new ListViewItem(title);
+                    imgList.Images.Add("no", noImage);
+                    li.ImageKey = "no";
                     listView.Items.Add(li);
                 }
 
                 if (item.Property("firstimage2") != null)
                 {
-                    result.Firstimage2 = item.GetValue("firstimage2").ToString(); // 썸네일
+                    result.Firstimage2 = item.GetValue("firstimage2").ToString();
                 }
                 resultList.Add(result);
             }
         }
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            //cbx_language.Items.Clear();
-            //cbxArea.Items.Clear();
-            //cbxMuni.Items.Clear();
-            //cbxService1.Items.Clear();
-            //cbxService2.Items.Clear();
-            //cbxService3.Items.Clear();
 
             Basic();
-
-            //Form1_Load(null, null);
 
         }
 
@@ -462,6 +475,43 @@ namespace TourApp
             jsonCat1 = GetJson(GetPath(languages[cbx_language.SelectedIndex].EngName, "categoryCode", "7"));
             itemsArr = JArray.Parse(jsonCat1["response"]["body"]["items"]["item"].ToString());
             GetObject(itemsArr, cat1List, cbxService1);
+        }
+
+        private void listView_Click(object sender, EventArgs e)
+        {
+            jsonObj = GetJson(GetPath(languages[cbx_language.SelectedIndex].EngName, "detailCommon"));
+            var item = JObject.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
+
+            string zipcode = (item.Property("zipcode") != null) ? item.GetValue("zipcode").ToString() : "X";
+            string addr1 = (item.Property("addr1") != null) ? item.GetValue("addr1").ToString() : "X";
+            string overview = (item.Property("overview") != null) ? item.GetValue("overview").ToString().Replace("<br>", "").Replace("</br>", "").Replace("<br />", "").Replace("<font>", "").Replace("</font>", "") : "X";
+            string tel = (item.Property("tel") != null) ? item.GetValue("tel").ToString() : "X";
+            string title = (item.Property("title") != null) ? item.GetValue("title").ToString() : "X";
+            string homepageNode = (item.Property("homepage") != null) ? item.GetValue("homepage").ToString() : "";
+            string homepage = "";
+            if (!string.IsNullOrEmpty(homepageNode))
+            {
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(homepageNode);
+                HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
+                homepage = root.InnerText; 
+            }
+            else
+            {
+                homepage = "X";
+            }
+            string img = (item.Property("firstimage") != null) ? item.GetValue("firstimage").ToString() : "";
+            Image image = null;
+            if (!string.IsNullOrEmpty(img))
+            {
+                var req = WebRequest.Create(img) as HttpWebRequest;
+                var res = req.GetResponse() as HttpWebResponse;
+                var imgStream = res.GetResponseStream();
+                image = Image.FromStream(imgStream);
+            }
+
+            FrmResultClick frc = new FrmResultClick(zipcode, addr1, tel, title, overview, homepage, image);
+            frc.ShowDialog();
         }
     }
 }

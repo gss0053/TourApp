@@ -200,9 +200,9 @@ namespace TourApp
 
         private void FrmMembership_Load(object sender, EventArgs e)
         {
-
-            Frm_Language_Select fls = new Frm_Language_Select(languages);
-            fls.ShowDialog();
+            pbClose.ImageLocation = Application.StartupPath + @"\images\icon.png";
+            //Frm_Language_Select fls = new Frm_Language_Select(languages);
+            //fls.ShowDialog();
             dbconnect.ExcuteSelect(lstMembership);
         }
 
