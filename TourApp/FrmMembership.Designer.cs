@@ -66,16 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
-
-            this.pbClose.Location = new System.Drawing.Point(408, 1);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(44, 43);
-            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbClose.TabIndex = 7;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-
             // btnFind
             // 
             this.btnFind.Location = new System.Drawing.Point(308, 159);

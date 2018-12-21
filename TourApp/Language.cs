@@ -81,5 +81,50 @@ namespace TourApp
             this.middle_class = middle_class;
             this.small_Category = small_Category;
         }
+
+        private string necessary;
+
+        public string Necessary
+        {
+            get { return necessary; }
+            set { necessary = value; }
+        }
+        private string combination;
+
+        public string Combination
+        {
+            get { return combination; }
+            set { combination = value; }
+        }
+        private string combination2;
+
+        public string Combination2
+        {
+            get { return combination2; }
+            set { combination2 = value; }
+        }
+        private string within;
+
+        public string Within
+        {
+            get { return within; }
+            set { within = value; }
+        }
+        private string overlap;
+
+        public string Overlap
+        {
+            get { return overlap; }
+            set { overlap = value; }
+        }
+
+        public Language(string engName, string korName, string select_language, string select_region, string service_classification, string main_Category, string middle_class, string small_Category, string necessary, string combination, string combination2, string within, string overlap) : this(engName, korName, select_language, select_region, service_classification, main_Category, middle_class, small_Category)
+        {
+            this.necessary = necessary;
+            this.combination = combination;
+            this.combination2 = combination2;
+            this.within = within;
+            this.overlap = overlap;
+        }
     }
 }

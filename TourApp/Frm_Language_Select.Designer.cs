@@ -43,9 +43,9 @@
             // 
             // btn_Kor
             // 
-            this.btn_Kor.Location = new System.Drawing.Point(68, 107);
+            this.btn_Kor.Location = new System.Drawing.Point(0, 180);
             this.btn_Kor.Name = "btn_Kor";
-            this.btn_Kor.Size = new System.Drawing.Size(75, 23);
+            this.btn_Kor.Size = new System.Drawing.Size(467, 82);
             this.btn_Kor.TabIndex = 0;
             this.btn_Kor.Text = "국어(한글)";
             this.btn_Kor.UseVisualStyleBackColor = true;
@@ -53,66 +53,73 @@
             // 
             // btn_Eng
             // 
-            this.btn_Eng.Location = new System.Drawing.Point(149, 107);
+            this.btn_Eng.Location = new System.Drawing.Point(78, 268);
             this.btn_Eng.Name = "btn_Eng";
-            this.btn_Eng.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eng.Size = new System.Drawing.Size(129, 23);
             this.btn_Eng.TabIndex = 1;
             this.btn_Eng.Text = "English(영어)";
             this.btn_Eng.UseVisualStyleBackColor = true;
+            this.btn_Eng.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Jpn
             // 
-            this.btn_Jpn.Location = new System.Drawing.Point(230, 107);
+            this.btn_Jpn.Location = new System.Drawing.Point(217, 268);
             this.btn_Jpn.Name = "btn_Jpn";
-            this.btn_Jpn.Size = new System.Drawing.Size(75, 23);
+            this.btn_Jpn.Size = new System.Drawing.Size(129, 23);
             this.btn_Jpn.TabIndex = 2;
             this.btn_Jpn.Text = "日本語(일어)";
             this.btn_Jpn.UseVisualStyleBackColor = true;
+            this.btn_Jpn.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Chs
             // 
-            this.btn_Chs.Location = new System.Drawing.Point(311, 107);
+            this.btn_Chs.Location = new System.Drawing.Point(78, 297);
             this.btn_Chs.Name = "btn_Chs";
-            this.btn_Chs.Size = new System.Drawing.Size(75, 23);
+            this.btn_Chs.Size = new System.Drawing.Size(129, 23);
             this.btn_Chs.TabIndex = 3;
             this.btn_Chs.Text = "简体中文(중어-간체)";
             this.btn_Chs.UseVisualStyleBackColor = true;
+            this.btn_Chs.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Cht
             // 
-            this.btn_Cht.Location = new System.Drawing.Point(68, 176);
+            this.btn_Cht.Location = new System.Drawing.Point(217, 297);
             this.btn_Cht.Name = "btn_Cht";
-            this.btn_Cht.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cht.Size = new System.Drawing.Size(129, 23);
             this.btn_Cht.TabIndex = 4;
             this.btn_Cht.Text = "繁體中文(중어-번체)";
             this.btn_Cht.UseVisualStyleBackColor = true;
+            this.btn_Cht.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Ger
             // 
-            this.btn_Ger.Location = new System.Drawing.Point(68, 200);
+            this.btn_Ger.Location = new System.Drawing.Point(78, 326);
             this.btn_Ger.Name = "btn_Ger";
-            this.btn_Ger.Size = new System.Drawing.Size(75, 23);
+            this.btn_Ger.Size = new System.Drawing.Size(129, 23);
             this.btn_Ger.TabIndex = 5;
             this.btn_Ger.Text = "Deutsch(독일어)";
             this.btn_Ger.UseVisualStyleBackColor = true;
+            this.btn_Ger.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Fre
             // 
-            this.btn_Fre.Location = new System.Drawing.Point(68, 229);
+            this.btn_Fre.Location = new System.Drawing.Point(217, 326);
             this.btn_Fre.Name = "btn_Fre";
-            this.btn_Fre.Size = new System.Drawing.Size(133, 23);
+            this.btn_Fre.Size = new System.Drawing.Size(129, 23);
             this.btn_Fre.TabIndex = 6;
             this.btn_Fre.Text = "Le français(프랑스어)";
             this.btn_Fre.UseVisualStyleBackColor = true;
+            this.btn_Fre.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // btn_Spn
             // 
-            this.btn_Spn.Location = new System.Drawing.Point(68, 252);
+            this.btn_Spn.Location = new System.Drawing.Point(78, 355);
             this.btn_Spn.Name = "btn_Spn";
-            this.btn_Spn.Size = new System.Drawing.Size(75, 23);
+            this.btn_Spn.Size = new System.Drawing.Size(129, 23);
             this.btn_Spn.TabIndex = 7;
             this.btn_Spn.Text = "Español(스페인어)";
             this.btn_Spn.UseVisualStyleBackColor = true;
+            this.btn_Spn.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // pictureBox1
             // 
@@ -126,18 +133,19 @@
             // 
             // btn_Rus
             // 
-            this.btn_Rus.Location = new System.Drawing.Point(68, 281);
+            this.btn_Rus.Location = new System.Drawing.Point(217, 355);
             this.btn_Rus.Name = "btn_Rus";
-            this.btn_Rus.Size = new System.Drawing.Size(133, 23);
+            this.btn_Rus.Size = new System.Drawing.Size(129, 23);
             this.btn_Rus.TabIndex = 9;
             this.btn_Rus.Text = "русский(러시아어)";
             this.btn_Rus.UseVisualStyleBackColor = true;
+            this.btn_Rus.Click += new System.EventHandler(this.LangBtn_Click);
             // 
             // Frm_Language_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 354);
+            this.ClientSize = new System.Drawing.Size(468, 618);
             this.Controls.Add(this.btn_Rus);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Spn);

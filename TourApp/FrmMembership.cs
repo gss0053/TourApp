@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,13 +19,16 @@ namespace TourApp
     {
         List<Membership> lstMembership;
         DBConnect dbconnect = new DBConnect();
-        List<Language> languages;
+       // List<Language> languages;
 
-        public FrmMembership(List<Membership> lstMembership, List<Language> languages)
+        
+
+        public FrmMembership(List<Membership> lstMembership)
         {
             InitializeComponent();
             this.lstMembership = lstMembership;
-            this.languages = languages;
+            //this.languages = languages;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -201,9 +207,87 @@ namespace TourApp
         private void FrmMembership_Load(object sender, EventArgs e)
         {
             pbClose.ImageLocation = Application.StartupPath + @"\images\icon.png";
-            //Frm_Language_Select fls = new Frm_Language_Select(languages);
-            //fls.ShowDialog();
             dbconnect.ExcuteSelect(lstMembership);
+
+
+            //string a = CultureInfo.CurrentCulture.EnglishName;
+            //MessageBox.Show(a);
+
+            switch (ConfigurationManager.AppSettings["lang"])
+            {             
+                case "Kor":
+                    lblValid.Text = Lang_Resource.Kor.Necessary;                  
+                    lblIDValid.Text = Lang_Resource.Kor.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Kor.Combination;
+                    lblIDRule.Text = Lang_Resource.Kor.Combination2;
+                    lblNameRule.Text = Lang_Resource.Kor.Within;                
+                    break;
+                case "Eng":
+                    lblValid.Text = Lang_Resource.Eng.Necessary;
+                    lblIDValid.Text = Lang_Resource.Eng.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Eng.Combination;
+                    lblIDRule.Text = Lang_Resource.Eng.Combination2;
+                    lblNameRule.Text = Lang_Resource.Eng.Within;
+                    break;
+                case "Cht":
+                    lblValid.Text = Lang_Resource.Cht.Necessary;
+                    lblIDValid.Text = Lang_Resource.Cht.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Cht.Combination;
+                    lblIDRule.Text = Lang_Resource.Cht.Combination2;
+                    lblNameRule.Text = Lang_Resource.Cht.Within;
+                    break;
+                case "Chs":
+                    lblValid.Text = Lang_Resource.Chs.Necessary;
+                    lblIDValid.Text = Lang_Resource.Chs.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Chs.Combination;
+                    lblIDRule.Text = Lang_Resource.Chs.Combination2;
+                    lblNameRule.Text = Lang_Resource.Chs.Within;
+                    break;
+                case "Jpn":
+                    lblValid.Text = Lang_Resource.Jpn.Necessary;
+                    lblIDValid.Text = Lang_Resource.Jpn.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Jpn.Combination;
+                    lblIDRule.Text = Lang_Resource.Jpn.Combination2;
+                    lblNameRule.Text = Lang_Resource.Jpn.Within;
+                    break;
+                case "Rus":
+                    lblValid.Text = Lang_Resource.Rus.Necessary;
+                    lblIDValid.Text = Lang_Resource.Rus.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Rus.Combination;
+                    lblIDRule.Text = Lang_Resource.Rus.Combination2;
+                    lblNameRule.Text = Lang_Resource.Rus.Within;
+                    break;
+                case "Fre":
+                    lblValid.Text = Lang_Resource.Fre.Necessary;
+                    lblIDValid.Text = Lang_Resource.Fre.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Fre.Combination;
+                    lblIDRule.Text = Lang_Resource.Fre.Combination2;
+                    lblNameRule.Text = Lang_Resource.Fre.Within;
+                    break;
+                case "Ger":
+                    lblValid.Text = Lang_Resource.Ger.Necessary;
+                    lblIDValid.Text = Lang_Resource.Ger.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Ger.Combination;
+                    lblIDRule.Text = Lang_Resource.Ger.Combination2;
+                    lblNameRule.Text = Lang_Resource.Ger.Within;
+                    break;
+                case "Spn":
+                    lblValid.Text = Lang_Resource.Spn.Necessary;
+                    lblIDValid.Text = Lang_Resource.Spn.Overlap;
+                    lblPwdRule.Text = Lang_Resource.Spn.Combination;
+                    lblIDRule.Text = Lang_Resource.Spn.Combination2;
+                    lblNameRule.Text = Lang_Resource.Spn.Within;
+                    break;
+
+                default:
+                    break;
+            }
+
+            //lblValid.Text = languages[lang_index].Necessary;
+            //lblIDValid.Text = languages[lang_index].Overlap;
+            //lblPwdRule.Text = languages[lang_index].Combination;
+            //lblIDRule.Text = languages[lang_index].Combination2;
+            //lblNameRule.Text = languages[lang_index].Within;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

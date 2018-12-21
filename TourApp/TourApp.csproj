@@ -95,6 +95,51 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lang_Resource\Chs.Designer.cs">
+      <DependentUpon>Chs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Cht.Designer.cs">
+      <DependentUpon>Cht.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Rus.Designer.cs">
+      <DependentUpon>Rus.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Spn.Designer.cs">
+      <DependentUpon>Spn.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Fre.Designer.cs">
+      <DependentUpon>Fre.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Ger.Designer.cs">
+      <DependentUpon>Ger.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Eng.Designer.cs">
+      <DependentUpon>Eng.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Jpn.Designer.cs">
+      <DependentUpon>Jpn.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Lang_Resource\Kor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Kor.resx</DependentUpon>
+    </Compile>
     <Compile Include="Language.cs" />
     <Compile Include="Membership.cs" />
     <Compile Include="Program.cs" />
@@ -116,6 +161,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Language_Select.resx">
       <DependentUpon>Frm_Language_Select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Chs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Cht.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Cht.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Rus.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rus.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Spn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Spn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Fre.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Fre.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Ger.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ger.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Eng.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Eng.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Jpn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Jpn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang_Resource\Kor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Kor.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

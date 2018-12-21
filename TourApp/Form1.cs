@@ -20,7 +20,8 @@ namespace TourApp
 {
     public partial class Form1 : Form
     {
-        int lang_index;
+        
+        internal int lang_index;
         public static List<Membership> lstMembership = new List<Membership>();
         private JObject jsonObj;
         private JObject jsonCat1;
@@ -47,12 +48,15 @@ namespace TourApp
             cat3List = new List<JsonSource>();
             resultList = new List<Result>();
             languages = new List<Language>();
-            MessageBox.Show(Application.ExecutablePath/*.Substring(0, Application.StartupPath.Length - 21) + @"Resource\no.png"*/); //21
+            //MessageBox.Show(Application.ExecutablePath/*.Substring(0, Application.StartupPath.Length - 21) + @"Resource\no.png"*/); //21
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             Language_List();
-            FrmMembership fms = new FrmMembership(lstMembership,languages);
+            Frm_Language_Select fls = new Frm_Language_Select();         
+            fls.ShowDialog();
+
+            FrmMembership fms = new FrmMembership(lstMembership);
             fms.ShowDialog();
 
             this.Text = "한국 국문관광정보 프로그램";
@@ -89,15 +93,35 @@ namespace TourApp
 
         private void Language_List()
         {
-            languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류"));
-            languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category"));
-            languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"));
-            languages.Add(new Language("ChsService", "简体中文(중어-간체)", "选择语言", "选择地区", "服务分类", "主要类别", "中产阶级", "小类"));
-            languages.Add(new Language("ChtService", "繁體中文(중어-번체)", "選擇語言", "選擇地區", "服務分類", "主要類別", "中產階級", "小類"));
-            languages.Add(new Language("GerService", "Deutsch(독일어)", "Sprache wählen", "Region auswählen", "Service Klassifizierung", "Hauptkategorie", "MittelKategorie", "Kleine Kategorie"));
-            languages.Add(new Language("FreService", "Le français(프랑스어)", "Sélectionnez la langue", "Sélectionnez une région", "Classification de service", "Catégorie majeure", "Classe moyenne", "Petite catégorie"));
-            languages.Add(new Language("SpnService", "Español(스페인어)", "Seleccionar idioma", "Seleccione region", "Clasificación de servicios", "Catégorie majeure", "Clase media", "Categoría pequeña"));
-            languages.Add(new Language("RusService", "русский(러시아어)", "Выберите язык", "Выберите регион", "Сервисная классификация", "Основная категория", "Средний класс", "Малая категория"));
+            //English, Number    Special Character
+            // 50 Within Character
+            // check
+            // (5~13) English, Number
+            // (8~13) English, Number, Special Character
+
+
+            // 언어
+            #region MyRegion 
+            languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류", "* 필수", "자리 영문,숫자 조합", "자리 영문,숫자,특수문자 조합", "50 자 이내 문자", "중복확인"));
+            languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category", "* Necessary", "(5~13) English, Number Combination", "(8~13) English, Number, Special Character Combination", "50 Within Character", "overlap check"));
+            languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"
+                , "* 必須", "(5~13) English, Number 組み合わせ", "(8~13) English, Number, Special Character 組み合わせ", "50 以内 文字", "重複 Check"));
+            languages.Add(new Language("ChsService", "简体中文(중어-간체)", "选择语言", "选择地区", "服务分类", "主要类别", "中产阶级", "小类"
+                , "* 需要", "(5~13) English, Number 组合", "(8~13) English, Number, Special Character 组合", "50 內 人物", "复制 Check"));
+            languages.Add(new Language("ChtService", "繁體中文(중어-번체)", "選擇語言", "選擇地區", "服務分類", "主要類別", "中產階級", "小類"
+                , "* 需要", "(5~13) English, Number 組合", "(8~13) English, Number, Special Character 組合", "50 內 人物", "複製 Check"));
+            languages.Add(new Language("GerService", "Deutsch(독일어)", "Sprache wählen", "Region auswählen", "Service Klassifizierung", "Hauptkategorie", "MittelKategorie", "Kleine Kategorie"
+                , "* Erforderlich", "(5~13) English, Number Kombination", "(8~13) English, Number, Special Character Kombination", "50 Innerhalb Zeichen", "Überlappung Check"));
+
+            languages.Add(new Language("FreService", "Le français(프랑스어)", "Sélectionnez la langue", "Sélectionnez une région", "Classification de service", "Catégorie majeure", "Classe moyenne", "Petite catégorie"
+                , "* Requis", "(5~13) English, Number Combinaison", "(8~13) English, Number, Special Character Combinaison", "50 Dans Caractère", "Chevauchement Check"));
+
+            languages.Add(new Language("SpnService", "Español(스페인어)", "Seleccionar idioma", "Seleccione region", "Clasificación de servicios", "Catégorie majeure", "Clase media", "Categoría pequeña"
+                , "* Requerido", "(5~13) English, Number Combinación", "(8~13) English, Number, Special Character Combinación", "50 Dentro de El personaje", "Superposición Check"));
+
+            languages.Add(new Language("RusService", "русский(러시아어)", "Выберите язык", "Выберите регион", "Сервисная классификация", "Основная категория", "Средний класс", "Малая категория"
+                , "* требуется", "(5~13) English, Number комбинирование", "(8~13) English, Number, Special Character комбинирование", "50 в характер", "дупликация Check")); 
+            #endregion 
         }
 
         private void GetObject(JArray itemsArr, List<JsonSource> lst, ComboBox cbx)
