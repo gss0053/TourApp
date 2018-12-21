@@ -47,6 +47,7 @@ namespace TourApp
             cat3List = new List<JsonSource>();
             resultList = new List<Result>();
             languages = new List<Language>();
+            MessageBox.Show(Application.ExecutablePath/*.Substring(0, Application.StartupPath.Length - 21) + @"Resource\no.png"*/); //21
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -401,7 +402,7 @@ namespace TourApp
                 ListViewItem li;
                 string title = result.Title;
                 listView.LargeImageList = imgList;
-                Image noImage = Image.FromFile(@"C:\Users\GD1-20\source\repos\TourApp\TourApp\Resources\no.png");
+                Image noImage = Image.FromFile(Application.StartupPath + @"\images\no.jpg");
                 if (item.Property("firstimage") != null)
                 {
                     result.Firstimage = item.GetValue("firstimage").ToString(); // 썸네일
@@ -412,7 +413,6 @@ namespace TourApp
                     imgList.ImageSize = new Size(256, 256);
                     imgList.ColorDepth = ColorDepth.Depth32Bit;
                     imgList.Images.Add(title, file1);
-
                     li = new ListViewItem(title);
                     
                     li.ImageKey = title;

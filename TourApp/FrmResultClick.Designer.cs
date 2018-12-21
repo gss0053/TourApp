@@ -50,7 +50,7 @@
             // 
             // pbx
             // 
-            this.pbx.Image = global::TourApp.Properties.Resources.no;
+            //this.pbx.Image = global::TourApp.Properties.Resources.no;
             this.pbx.Location = new System.Drawing.Point(12, 12);
             this.pbx.Name = "pbx";
             this.pbx.Size = new System.Drawing.Size(411, 356);

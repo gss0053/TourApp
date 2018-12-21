@@ -64,7 +64,7 @@
             // 
             // pbClose
             // 
-            this.pbClose.Image = global::TourApp.Properties.Resources.Button_Close_icon;
+            //this.pbClose.Image = global::TourApp.Properties.Resources.Button_Close_icon;
             this.pbClose.Location = new System.Drawing.Point(408, 1);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(44, 43);
