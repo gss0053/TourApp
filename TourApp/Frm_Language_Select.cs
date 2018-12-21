@@ -13,9 +13,8 @@ namespace TourApp
 {
     public partial class Frm_Language_Select : Form
     {
-        internal Form1 form1;
 
-        internal string lang_index;
+        internal int lang_index;
 
         public Frm_Language_Select()
         {
@@ -40,37 +39,37 @@ namespace TourApp
             switch (LangBtn.Name)
             {
                 case "btn_Kor":
-                    lang_index = "Kor";
+                    lang_index = 0;
                     break;
                 case "btn_Eng":
-                    lang_index = "Eng";
+                    lang_index = 1;
                     break;
                 case "btn_Jpn":
-                    lang_index = "Jpn";
+                    lang_index = 2;
                     break;
                 case "btn_Chs":
-                    lang_index = "Chs";
+                    lang_index = 3;
                     break;
                 case "btn_Cht":
-                    lang_index = "Cht";
+                    lang_index = 4;
                     break;
                 case "btn_Ger":
-                    lang_index = "Ger";
+                    lang_index = 5;
                     break;
                 case "btn_Fre":
-                    lang_index = "Fre";
+                    lang_index = 6;
                     break;
                 case "btn_Spn":
-                    lang_index = "Spn";
+                    lang_index = 7;
                     break;
                 case "btn_Rus":
-                    lang_index = "Rus";
+                    lang_index = 8;
                     break;
                 default:
                     break;
             }
 
-            ConfigurationManager.AppSettings["lang"] = lang_index;
+            ConfigurationManager.AppSettings["lang"] = lang_index.ToString();
 
 
             Close();

@@ -51,7 +51,7 @@ namespace TourApp
                 }
                 catch (SqlException)
                 {
-                    System.Windows.Forms.MessageBox.Show("Insert 실패", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show("Insert Fail", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     result = false;
                 }
                 return result;

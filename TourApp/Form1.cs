@@ -20,7 +20,6 @@ namespace TourApp
 {
     public partial class Form1 : Form
     {        
-        internal int lang_index;
         private int pageNo = 1;
         private int totalCnt = 0;
         public static List<Membership> lstMembership = new List<Membership>();
@@ -53,13 +52,13 @@ namespace TourApp
         private void Form1_Load(object sender, EventArgs e)
         {
             Language_List();
-            Frm_Language_Select fls = new Frm_Language_Select();         
+            Frm_Language_Select fls = new Frm_Language_Select();           
             fls.ShowDialog();
 
-            FrmMembership fms = new FrmMembership(lstMembership);
+            FrmMembership fms = new FrmMembership(lstMembership,languages);
             fms.ShowDialog();
 
-            this.Text = "한국 국문관광정보 프로그램";
+            this.Text = "Tour";
 
             //KorService 국어
             //EngService 영어
@@ -84,43 +83,57 @@ namespace TourApp
             cbxService2.Items.Clear();
             cbxService3.Items.Clear();
 
+
+
+            //cbx_language.Items.Add(Lang_Resource.Kor.Language);
+            //cbx_language.Items.Add(Lang_Resource.Eng.Language);
+            //cbx_language.Items.Add(Lang_Resource.Jpn.Language);           
+            //cbx_language.Items.Add(Lang_Resource.Chs.Language);
+            //cbx_language.Items.Add(Lang_Resource.Cht.Language);
+            //cbx_language.Items.Add(Lang_Resource.Fre.Language);
+            //cbx_language.Items.Add(Lang_Resource.Rus.Language);
+            //cbx_language.Items.Add(Lang_Resource.Spn.Language);
+            //cbx_language.Items.Add(Lang_Resource.Ger.Language);
+
             foreach (var item in languages)
             {
                 cbx_language.Items.Add(item.KorName);
             }
-            cbx_language.SelectedIndex = 0;
+            cbx_language.SelectedIndex = Int32.Parse(ConfigurationManager.AppSettings["lang"]);
+            //ConfigurationManager.AppSettings["lang"] = cbx_language.SelectedText;
+            //MessageBox.Show(ConfigurationManager.AppSettings["lang"].ToString());
         }
 
         private void Language_List()
         {
-            //English, Number    Special Character
-            // 50 Within Character
-            // check
-            // (5~13) English, Number
-            // (8~13) English, Number, Special Character
-
-
             // 언어
             #region MyRegion 
-            languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류", "* 필수", "자리 영문,숫자 조합", "자리 영문,숫자,특수문자 조합", "50 자 이내 문자", "중복확인"));
-            languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category", "* Necessary", "(5~13) English, Number Combination", "(8~13) English, Number, Special Character Combination", "50 Within Character", "overlap check"));
-            languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"
-                , "* 必須", "(5~13) English, Number 組み合わせ", "(8~13) English, Number, Special Character 組み合わせ", "50 以内 文字", "重複 Check"));
-            languages.Add(new Language("ChsService", "简体中文(중어-간체)", "选择语言", "选择地区", "服务分类", "主要类别", "中产阶级", "小类"
-                , "* 需要", "(5~13) English, Number 组合", "(8~13) English, Number, Special Character 组合", "50 內 人物", "复制 Check"));
-            languages.Add(new Language("ChtService", "繁體中文(중어-번체)", "選擇語言", "選擇地區", "服務分類", "主要類別", "中產階級", "小類"
-                , "* 需要", "(5~13) English, Number 組合", "(8~13) English, Number, Special Character 組合", "50 內 人物", "複製 Check"));
-            languages.Add(new Language("GerService", "Deutsch(독일어)", "Sprache wählen", "Region auswählen", "Service Klassifizierung", "Hauptkategorie", "MittelKategorie", "Kleine Kategorie"
-                , "* Erforderlich", "(5~13) English, Number Kombination", "(8~13) English, Number, Special Character Kombination", "50 Innerhalb Zeichen", "Überlappung Check"));
+            languages.Add(new Language("KorService", "국어(한글)", "언어 선택", "지역 선택", "서비스 분류", "대분류", "중분류", "소분류", "* 필수", "(5~13) 자리 영문,숫자 조합", "(8~13) 자리 영문,숫자,특수문자 조합", "50 자 이내 문자", "중복확인","우편번호","전화번호","홈페이지","주소","개요"));
 
+            languages.Add(new Language("EngService", "English(영어)", "Select language", "Select region", "Service classification", "Main Category", "Middle Category", "Small Category", "* Necessary", "(5~13) English, Number Combination", "(8~13) English, Number, Special Character Combination", "50 Within Character", "overlap check", "Postal", "Phone", "home page", "address", "main"));
+
+            languages.Add(new Language("JpnService", "日本語(일어)", "言語を選択", "地域を選択", "サービスの分類", "大分類", "中分類", "小分類"
+                , "* 必須", "(5~13) English, Number 組み合わせ", "(8~13) English, Number, Special Character 組み合わせ", "50 以内 文字", "重複 Check"
+                , "郵便番号", "電話番号", "ホームページ", "アドレス", "概要"));
+            languages.Add(new Language("ChsService", "简体中文(중어-간체)", "选择语言", "选择地区", "服务分类", "主要类别", "中产阶级", "小类"
+                , "* 需要", "(5~13) English, Number 组合", "(8~13) English, Number, Special Character 组合", "50 內 人物", "复制 Check"
+                , "邮政编码", "电话号码", "主页", "地址", "摘要"));
+            languages.Add(new Language("ChtService", "繁體中文(중어-번체)", "選擇語言", "選擇地區", "服務分類", "主要類別", "中產階級", "小類"
+                , "* 需要", "(5~13) English, Number 組合", "(8~13) English, Number, Special Character 組合", "50 內 人物", "複製 Check"
+                , "郵政編碼", "電話號碼", "主頁", "地址", "摘要"));
+            languages.Add(new Language("GerService", "Deutsch(독일어)", "Sprache wählen", "Region auswählen", "Service Klassifizierung", "Hauptkategorie", "MittelKategorie", "Kleine Kategorie"
+                , "* Erforderlich", "(5~13) English, Number Kombination", "(8~13) English, Number, Special Character Kombination", "50 Innerhalb Zeichen", "Überlappung Check"
+               , "Postleitzahl", "Telefonnummer", "Startseite", "Adresse", "Übersicht"));
             languages.Add(new Language("FreService", "Le français(프랑스어)", "Sélectionnez la langue", "Sélectionnez une région", "Classification de service", "Catégorie majeure", "Classe moyenne", "Petite catégorie"
-                , "* Requis", "(5~13) English, Number Combinaison", "(8~13) English, Number, Special Character Combinaison", "50 Dans Caractère", "Chevauchement Check"));
+                , "* Requis", "(5~13) English, Number Combinaison", "(8~13) English, Number, Special Character Combinaison", "50 Dans Caractère", "Chevauchement Check"
+               , "Code postal", "Numéro de téléphone", "Page d'accueil", "adresse", "Vue d'ensemble"));
 
             languages.Add(new Language("SpnService", "Español(스페인어)", "Seleccionar idioma", "Seleccione region", "Clasificación de servicios", "Catégorie majeure", "Clase media", "Categoría pequeña"
-                , "* Requerido", "(5~13) English, Number Combinación", "(8~13) English, Number, Special Character Combinación", "50 Dentro de El personaje", "Superposición Check"));
-
+                , "* Requerido", "(5~13) English, Number Combinación", "(8~13) English, Number, Special Character Combinación", "50 Dentro de El personaje", "Superposición Check"
+                , "Codigo postal", "Numero de telefono", "Página de inicio", "dirección", "Visión general"));
             languages.Add(new Language("RusService", "русский(러시아어)", "Выберите язык", "Выберите регион", "Сервисная классификация", "Основная категория", "Средний класс", "Малая категория"
-                , "* требуется", "(5~13) English, Number комбинирование", "(8~13) English, Number, Special Character комбинирование", "50 в характер", "дупликация Check")); 
+                , "* требуется", "(5~13) English, Number комбинирование", "(8~13) English, Number, Special Character комбинирование", "50 в характер", "дупликация Check"
+                , "Почтовый индекс", "Номер телефона", "Главная страница", "адрес", "резюме"));
             #endregion 
         }
 
@@ -154,7 +167,7 @@ namespace TourApp
             }
             else
             {
-                MessageBox.Show("에러 발생 : " + statusCode);
+                MessageBox.Show("Error : " + statusCode);
             }
             return jsonObj;
         }
@@ -178,7 +191,6 @@ namespace TourApp
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)
         {
             pageNo = 1;
-            cbxMuni.Text = "소분류";
             cbxMuni.Items.Clear();
             muniList.Clear();
             // 세종 JSON 구조 달라서 if문 걸어줌
@@ -222,10 +234,8 @@ namespace TourApp
         {
             pageNo = 1;
             cbxService2.Items.Clear();
-            cbxService2.Text = "중분류";
             cat2List.Clear();
             cbxService3.Items.Clear();
-            cbxService3.Text = "소분류";
             cat3List.Clear();
 
 
@@ -282,7 +292,6 @@ namespace TourApp
         {
             pageNo = 1;
             cbxService3.Items.Clear();
-            cbxService3.Text = "소분류";
             cat3List.Clear();
 
             path = GetPath(languages[cbx_language.SelectedIndex].EngName, "categoryCode", "10");
@@ -344,7 +353,7 @@ namespace TourApp
             {
                 jsonObj = GetJson(path);
                 totalCnt = int.Parse(JObject.Parse(jsonObj["response"]["body"].ToString()).GetValue("totalCount").ToString());
-                lblSearchCount.Text = "총 검색 건수 : " + totalCnt + "건";
+                lblSearchCount.Text = "Total : " + totalCnt ;
                 if (totalCnt % 20 != 0)
                 {
                     totalCnt = (totalCnt / 20) + 1;
@@ -358,7 +367,7 @@ namespace TourApp
             }
             catch (Exception)
             {
-                MessageBox.Show("찾으시는 데이터가 없습니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Not found Data.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             foreach (JObject item in itemsArr)
@@ -482,6 +491,9 @@ namespace TourApp
             cat2List.Clear();
             cat3List.Clear();
 
+            // 초기 언어 설정
+            ConfigurationManager.AppSettings["lang"] = cbx_language.SelectedIndex.ToString();
+
             lbl_language.Text = languages[cbx_language.SelectedIndex].Select_language;
             lbl_region.Text = languages[cbx_language.SelectedIndex].Select_region;
             lbl_service.Text = languages[cbx_language.SelectedIndex].Service_classification;
@@ -538,7 +550,7 @@ namespace TourApp
                 image = Image.FromStream(imgStream);
             }
 
-            FrmResultClick frc = new FrmResultClick(zipcode, addr1, tel, title, overview, homepage, image);
+            FrmResultClick frc = new FrmResultClick(zipcode, addr1, tel, title, overview, homepage, image,languages);
             frc.ShowDialog();
         }
 
@@ -551,7 +563,7 @@ namespace TourApp
             }
             else
             {
-                MessageBox.Show("끝 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("End Page.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -574,7 +586,7 @@ namespace TourApp
             }
             else
             {
-                MessageBox.Show("처음 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Strat Page.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -587,7 +599,7 @@ namespace TourApp
             }
             else
             {
-                MessageBox.Show("처음 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Strat Page.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -600,7 +612,7 @@ namespace TourApp
             }
             else
             {
-                MessageBox.Show("끝 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("End Page.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

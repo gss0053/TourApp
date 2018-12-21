@@ -126,5 +126,52 @@ namespace TourApp
             this.within = within;
             this.overlap = overlap;
         }
+
+
+        private string post;
+
+        public string Post
+        {
+            get { return post; }
+            set { post = value; }
+        }
+        private string phone;
+
+        public string Phone
+        {
+            get { return phone; }
+            set { phone = value; }
+        }
+        private string home_page;
+
+        public string Home_page
+        {
+            get { return home_page; }
+            set { home_page = value; }
+        }
+
+        private string addr;
+                
+        public string Addr
+        {
+            get { return addr; }
+            set { addr = value; }
+        }
+        private string main_txt;
+
+        public string Main_txt
+        {       
+            get { return main_txt; }
+            set { main_txt = value; }
+        }
+
+        public Language(string engName, string korName, string select_language, string select_region, string service_classification, string main_Category, string middle_class, string small_Category, string necessary, string combination, string combination2, string within, string overlap, string post, string phone, string home_page, string addr, string main_txt) : this(engName, korName, select_language, select_region, service_classification, main_Category, middle_class, small_Category, necessary, combination, combination2, within, overlap)
+        {
+            this.post = post;
+            this.phone = phone;
+            this.home_page = home_page;
+            this.addr = addr;
+            this.main_txt = main_txt;
+        }
     }
 }
