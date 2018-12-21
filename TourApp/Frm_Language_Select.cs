@@ -28,16 +28,25 @@ namespace TourApp
 
         private void Frm_Language_Select_Load(object sender, EventArgs e)
         {
-            Button btn1 = new Button();
-            btn1.Location = new Point(166, 90);
-            btn1.Size = new Size(75, 23);
-            btn1.TabIndex = 0;
-            btn1.Text = "button2";
-            btn1.Name = "btn1";
-            this.Controls.Add(btn1);
 
-            btn1.Show();
+        }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void LangBtn_Click(object sender, EventArgs e)
+        {
+            Button LangBtn = (Button)sender;
+            switch (LangBtn.Name)
+            {
+                case "btn_Kor":
+                    MessageBox.Show("Test");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
