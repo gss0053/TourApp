@@ -71,7 +71,7 @@
             this.groupBox1.Controls.Add(this.lblZipCode);
             this.groupBox1.Location = new System.Drawing.Point(429, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(732, 356);
+            this.groupBox1.Size = new System.Drawing.Size(865, 356);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -182,7 +182,7 @@
             this.groupBox2.Controls.Add(this.txtOverview);
             this.groupBox2.Location = new System.Drawing.Point(12, 374);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1149, 296);
+            this.groupBox2.Size = new System.Drawing.Size(1282, 296);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -203,14 +203,14 @@
             this.txtOverview.Multiline = true;
             this.txtOverview.Name = "txtOverview";
             this.txtOverview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOverview.Size = new System.Drawing.Size(1137, 240);
+            this.txtOverview.Size = new System.Drawing.Size(1270, 240);
             this.txtOverview.TabIndex = 0;
             // 
             // FrmResultClick
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 682);
+            this.ClientSize = new System.Drawing.Size(1323, 689);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pbx);
