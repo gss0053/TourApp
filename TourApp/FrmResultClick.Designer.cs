@@ -30,19 +30,19 @@
         {
             this.pbx = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblZipCode = new System.Windows.Forms.Label();
-            this.lblTel = new System.Windows.Forms.Label();
-            this.lblAddr = new System.Windows.Forms.Label();
-            this.lklbl = new System.Windows.Forms.LinkLabel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblhome = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblhome = new System.Windows.Forms.Label();
-            this.txtOverview = new System.Windows.Forms.TextBox();
+            this.lklbl = new System.Windows.Forms.LinkLabel();
+            this.lblAddr = new System.Windows.Forms.Label();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.lblZipCode = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.txtOverview = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -50,7 +50,6 @@
             // 
             // pbx
             // 
-            //this.pbx.Image = global::TourApp.Properties.Resources.no;
             this.pbx.Location = new System.Drawing.Point(12, 12);
             this.pbx.Name = "pbx";
             this.pbx.Size = new System.Drawing.Size(411, 356);
@@ -76,57 +75,24 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // groupBox2
+            // lblTitle
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtOverview);
-            this.groupBox2.Location = new System.Drawing.Point(12, 374);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1149, 296);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Location = new System.Drawing.Point(15, 26);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 24);
+            this.lblTitle.TabIndex = 10;
             // 
-            // lblZipCode
+            // lblhome
             // 
-            this.lblZipCode.AutoSize = true;
-            this.lblZipCode.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblZipCode.Location = new System.Drawing.Point(165, 95);
-            this.lblZipCode.Name = "lblZipCode";
-            this.lblZipCode.Size = new System.Drawing.Size(49, 16);
-            this.lblZipCode.TabIndex = 0;
-            this.lblZipCode.Text = "label1";
-            // 
-            // lblTel
-            // 
-            this.lblTel.AutoSize = true;
-            this.lblTel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTel.Location = new System.Drawing.Point(165, 150);
-            this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(49, 16);
-            this.lblTel.TabIndex = 1;
-            this.lblTel.Text = "label2";
-            // 
-            // lblAddr
-            // 
-            this.lblAddr.AutoSize = true;
-            this.lblAddr.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblAddr.Location = new System.Drawing.Point(165, 260);
-            this.lblAddr.Name = "lblAddr";
-            this.lblAddr.Size = new System.Drawing.Size(50, 16);
-            this.lblAddr.TabIndex = 3;
-            this.lblAddr.Text = "label4";
-            // 
-            // lklbl
-            // 
-            this.lklbl.AutoSize = true;
-            this.lklbl.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lklbl.Location = new System.Drawing.Point(165, 205);
-            this.lklbl.Name = "lklbl";
-            this.lklbl.Size = new System.Drawing.Size(78, 16);
-            this.lklbl.TabIndex = 4;
-            this.lklbl.TabStop = true;
-            this.lklbl.Text = "linkLabel1";
-            this.lklbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklbl_LinkClicked);
+            this.lblhome.AutoSize = true;
+            this.lblhome.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblhome.Location = new System.Drawing.Point(165, 206);
+            this.lblhome.Name = "lblhome";
+            this.lblhome.Size = new System.Drawing.Size(49, 16);
+            this.lblhome.TabIndex = 9;
+            this.lblhome.Text = "label5";
             // 
             // label1
             // 
@@ -168,25 +134,57 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "▶   우편번호 : ";
             // 
-            // lblhome
+            // lklbl
             // 
-            this.lblhome.AutoSize = true;
-            this.lblhome.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblhome.Location = new System.Drawing.Point(165, 206);
-            this.lblhome.Name = "lblhome";
-            this.lblhome.Size = new System.Drawing.Size(49, 16);
-            this.lblhome.TabIndex = 9;
-            this.lblhome.Text = "label5";
+            this.lklbl.AutoSize = true;
+            this.lklbl.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lklbl.Location = new System.Drawing.Point(165, 205);
+            this.lklbl.Name = "lklbl";
+            this.lklbl.Size = new System.Drawing.Size(78, 16);
+            this.lklbl.TabIndex = 4;
+            this.lklbl.TabStop = true;
+            this.lklbl.Text = "linkLabel1";
+            this.lklbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklbl_LinkClicked);
             // 
-            // txtOverview
+            // lblAddr
             // 
-            this.txtOverview.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtOverview.Location = new System.Drawing.Point(6, 50);
-            this.txtOverview.Multiline = true;
-            this.txtOverview.Name = "txtOverview";
-            this.txtOverview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOverview.Size = new System.Drawing.Size(1137, 240);
-            this.txtOverview.TabIndex = 0;
+            this.lblAddr.AutoSize = true;
+            this.lblAddr.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblAddr.Location = new System.Drawing.Point(165, 260);
+            this.lblAddr.Name = "lblAddr";
+            this.lblAddr.Size = new System.Drawing.Size(50, 16);
+            this.lblAddr.TabIndex = 3;
+            this.lblAddr.Text = "label4";
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTel.Location = new System.Drawing.Point(165, 150);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(49, 16);
+            this.lblTel.TabIndex = 1;
+            this.lblTel.Text = "label2";
+            // 
+            // lblZipCode
+            // 
+            this.lblZipCode.AutoSize = true;
+            this.lblZipCode.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblZipCode.Location = new System.Drawing.Point(165, 95);
+            this.lblZipCode.Name = "lblZipCode";
+            this.lblZipCode.Size = new System.Drawing.Size(49, 16);
+            this.lblZipCode.TabIndex = 0;
+            this.lblZipCode.Text = "label1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtOverview);
+            this.groupBox2.Location = new System.Drawing.Point(12, 374);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1149, 296);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
             // 
             // label5
             // 
@@ -198,14 +196,15 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "개요";
             // 
-            // lblTitle
+            // txtOverview
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTitle.Location = new System.Drawing.Point(15, 26);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(0, 24);
-            this.lblTitle.TabIndex = 10;
+            this.txtOverview.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtOverview.Location = new System.Drawing.Point(6, 50);
+            this.txtOverview.Multiline = true;
+            this.txtOverview.Name = "txtOverview";
+            this.txtOverview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtOverview.Size = new System.Drawing.Size(1137, 240);
+            this.txtOverview.TabIndex = 0;
             // 
             // FrmResultClick
             // 

@@ -19,9 +19,10 @@ using System.Windows.Forms;
 namespace TourApp
 {
     public partial class Form1 : Form
-    {
-        
+    {        
         internal int lang_index;
+        private int pageNo = 1;
+        private int totalCnt = 0;
         public static List<Membership> lstMembership = new List<Membership>();
         private JObject jsonObj;
         private JObject jsonCat1;
@@ -48,7 +49,6 @@ namespace TourApp
             cat3List = new List<JsonSource>();
             resultList = new List<Result>();
             languages = new List<Language>();
-            //MessageBox.Show(Application.ExecutablePath/*.Substring(0, Application.StartupPath.Length - 21) + @"Resource\no.png"*/); //21
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -162,7 +162,7 @@ namespace TourApp
         // 주소 얻어오는 메서드
         private string GetPath(string language, string apiKind, string rowNum)
         {
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json";
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest&numOfRows=" + rowNum + "&cat1=" + checkIndex(cbxService1, cat1List) + "&cat2=" + checkIndex(cbxService2, cat2List) + "&cat3=" + checkIndex(cbxService3, cat3List) + "&areaCode=" + checkIndex(cbxArea, areaList) + "&sigunguCode=" + checkIndex(cbxMuni, muniList) + "&_type=json&pageNo=" + pageNo;
             return path;
 
             
@@ -170,13 +170,14 @@ namespace TourApp
 
         private string GetPath(string language, string apiKind)
         {
-            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest" + "&_type=json" + "&contentId=" + resultList[listView.SelectedItems[0].Index].Contentid + "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y";
+            path = "http://api.visitkorea.or.kr/openapi/service/rest/" + language + "/" + apiKind + "?ServiceKey=" + key + "&MobileOS=ETC&MobileApp=AppTest" + "&_type=json" + "&contentId=" + resultList[listView.SelectedItems[0].Index].Contentid + "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y&pageNo=" + pageNo;
             return path;
         }
 
 
         private void cbxArea_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNo = 1;
             cbxMuni.Text = "소분류";
             cbxMuni.Items.Clear();
             muniList.Clear();
@@ -219,6 +220,7 @@ namespace TourApp
         // 대분류가 바뀔때 중분류
         private void cbxService1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNo = 1;
             cbxService2.Items.Clear();
             cbxService2.Text = "중분류";
             cat2List.Clear();
@@ -278,6 +280,7 @@ namespace TourApp
         // 중분류의 바뀔때 소분류 
         private void cbxService2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNo = 1;
             cbxService3.Items.Clear();
             cbxService3.Text = "소분류";
             cat3List.Clear();
@@ -332,19 +335,30 @@ namespace TourApp
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            listView.Items.Clear();
-            imgList.Images.Clear();
             resultList.Clear();
+            imgList.Images.Clear();
+            listView.Items.Clear();
             path = GetPath(languages[cbx_language.SelectedIndex].EngName, "areaBasedList", "20");
             JArray itemsArr = null;
             try
             {
                 jsonObj = GetJson(path);
+                totalCnt = int.Parse(JObject.Parse(jsonObj["response"]["body"].ToString()).GetValue("totalCount").ToString());
+                lblSearchCount.Text = "총 검색 건수 : " + totalCnt + "건";
+                if (totalCnt % 20 != 0)
+                {
+                    totalCnt = (totalCnt / 20) + 1;
+                }
+                else
+                {
+                    totalCnt /= 20;
+                }
+                lblPage.Text = pageNo + " / " + totalCnt;
                 itemsArr = JArray.Parse(jsonObj["response"]["body"]["items"]["item"].ToString());
             }
             catch (Exception)
             {
-                MessageBox.Show("Not Found Data", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("찾으시는 데이터가 없습니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             foreach (JObject item in itemsArr)
@@ -422,11 +436,10 @@ namespace TourApp
                 {
                     result.Tel = item.GetValue("tel").ToString();
                 }
-
-                ListViewItem li;
+                ListViewItem li = new ListViewItem();
                 string title = result.Title;
-                listView.LargeImageList = imgList;
-                Image noImage = Image.FromFile(Application.StartupPath + @"\images\no.jpg");
+                imgList.ImageSize = new Size(256, 256);
+                imgList.ColorDepth = ColorDepth.Depth32Bit;
                 if (item.Property("firstimage") != null)
                 {
                     result.Firstimage = item.GetValue("firstimage").ToString(); // 썸네일
@@ -434,39 +447,30 @@ namespace TourApp
                     var res = req.GetResponse() as HttpWebResponse;
                     var imgStream = res.GetResponseStream();
                     Image file1 = Image.FromStream(imgStream);
-                    imgList.ImageSize = new Size(256, 256);
-                    imgList.ColorDepth = ColorDepth.Depth32Bit;
                     imgList.Images.Add(title, file1);
-                    li = new ListViewItem(title);
-                    
-                    li.ImageKey = title;
-                    listView.Items.Add(li);
+                    li.Text = title;
                 }
                 else
                 {
-                    li = new ListViewItem(title);
-                    imgList.Images.Add("no", noImage);
-                    li.ImageKey = "no";
-                    listView.Items.Add(li);
+                    result.Firstimage = Application.StartupPath + @"\images\no.jpg";
+                    li.Text = title;
+                    imgList.Images.Add(title, Image.FromFile(result.Firstimage));
                 }
-
-                if (item.Property("firstimage2") != null)
-                {
-                    result.Firstimage2 = item.GetValue("firstimage2").ToString();
-                }
+                li.ImageKey = title;
+                listView.LargeImageList = imgList;
                 resultList.Add(result);
+                listView.Items.Add(li);
             }
         }
         private void btn_clear_Click(object sender, EventArgs e)
         {
-
             Basic();
-
         }
 
         //다국어 바뀔때
         private void cbx_language_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNo = 1;
             cbxArea.Items.Clear();
             cbxMuni.Items.Clear();
             cbxService1.Items.Clear();
@@ -518,7 +522,7 @@ namespace TourApp
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(homepageNode);
                 HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
-                homepage = root.InnerText; 
+                homepage = root.InnerText.Replace("<br>", "").Replace("</br>", "").Replace("<br />", ""); 
             }
             else
             {
@@ -536,6 +540,68 @@ namespace TourApp
 
             FrmResultClick frc = new FrmResultClick(zipcode, addr1, tel, title, overview, homepage, image);
             frc.ShowDialog();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (pageNo < totalCnt)
+            {
+                pageNo++;
+                btnSearch_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("끝 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void cbxService3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pageNo = 1;
+        }
+
+        private void cbxMuni_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pageNo = 1;
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (pageNo > 1)
+            {
+                pageNo--;
+                btnSearch_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("처음 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMostPrev_Click(object sender, EventArgs e)
+        {
+            if (pageNo > 1)
+            {
+                pageNo = 1;
+                btnSearch_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("처음 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMostNext_Click(object sender, EventArgs e)
+        {
+            if (pageNo < totalCnt)
+            {
+                pageNo = totalCnt;
+                btnSearch_Click(null, null); 
+            }
+            else
+            {
+                MessageBox.Show("끝 페이지 입니다.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
