@@ -239,7 +239,7 @@
     <Content Include="images\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\jap.png">
+    <Content Include="images\jap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\kor.png">

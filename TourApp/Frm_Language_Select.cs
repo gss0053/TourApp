@@ -29,7 +29,7 @@ namespace TourApp
             pbxChi1.ImageLocation = Application.StartupPath + @"\images\chi.png";
             pbxChi2.ImageLocation = Application.StartupPath + @"\images\chi.png";
             pbxEng.ImageLocation = Application.StartupPath + @"\images\eng.jpg";
-            pbxJap.ImageLocation = Application.StartupPath + @"\images\jap.png";
+            pbxJap.ImageLocation = Application.StartupPath + @"\images\jap.jpg";
             pbxDeu.ImageLocation = Application.StartupPath + @"\images\dot.png";
             pbxFra.ImageLocation = Application.StartupPath + @"\images\fra.png";
             pbxRus.ImageLocation = Application.StartupPath + @"\images\rus.png";

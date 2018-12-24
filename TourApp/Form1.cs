@@ -534,7 +534,7 @@ namespace TourApp
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(homepageNode);
                 HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
-                homepage = root.InnerText; 
+                homepage = root.InnerText;
             }
             else
             {
