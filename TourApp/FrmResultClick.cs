@@ -52,7 +52,7 @@ namespace TourApp
                 pbx.ImageLocation = Application.StartupPath + @"\images\no.jpg";
             }
 
-            txtOverview.Enabled = false;
+            //txtOverview.Enabled = false;
             txtOverview.Text = overview;
         }
 

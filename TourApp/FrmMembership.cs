@@ -43,6 +43,7 @@ namespace TourApp
         {
             FormattingControls();
             ControlCB();
+            checker.Enabled = true;
         }
 
         private void FormattingControls()
@@ -107,11 +108,11 @@ namespace TourApp
 
             btnLogin.Visible = false;
             btnLogin.Enabled = false;
-            //btnRegist.Text = "등록";
+            btnRegist.Text = "SUBMIT";
             btnRegist.Location = new Point(190, 650);
             btnRegist.Enabled = false;
             btnFind.Location = new Point(308, 650);
-            //btnFind.Text = "뒤로";
+            btnFind.Text = "CANCEL";
             btnFind.Click += btnFind_Click2;
             btnFind.Click -= btnFind_Click1;
             btnRegist.Click += btnRegist_Click2;
@@ -210,15 +211,17 @@ namespace TourApp
             {
                 if (item.Id == tbID.Text)
                 {
-
                     MessageBox.Show("Overlap ID.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                else if (chkID.Checked == true)
+                {
+                    MessageBox.Show("Pass Id.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    idValid = true;
+                    lblIDValid.Text = "validated";
+                    lblIDValid.ForeColor = Color.Red;
+                }
             }
-            MessageBox.Show("Pass Id.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            idValid = true;
-            lblIDValid.Text = "validated";
-            lblIDValid.ForeColor = Color.Red;
         }
 
         private void FrmMembership_Load(object sender, EventArgs e)
@@ -324,6 +327,9 @@ namespace TourApp
         private void tbID_TextChanged(object sender, EventArgs e)
         {
             // ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,13}$
+            lblIDValid.ForeColor = Color.DodgerBlue;
+            lblIDValid.Text = languages[Int32.Parse(ConfigurationManager.AppSettings["lang"])].Overlap;
+            idValid = false;
             string patternID = "^(?=.*?[A-Za-z])(?=.*?[0-9]).{5,13}$";
             if (Regex.IsMatch(tbID.Text,patternID))    // 패턴에 안맞을시에 메세지 박스뜸
             {
@@ -367,6 +373,10 @@ namespace TourApp
             {
                 btnRegist.Enabled = true;
             }
+            else
+            {
+                btnRegist.Enabled = false;
+            }
         }
 
         private void tbChk_TextChanged(object sender, EventArgs e)
@@ -375,6 +385,10 @@ namespace TourApp
             {
                 chkPwdChk.Checked = true;
             }
+            else if (tbChk.Text != tbPassword.Text)
+            {
+                chkPwdChk.Checked = false;
+            }
         }
 
         private void mtbPhone_TextChanged(object sender, EventArgs e)
@@ -382,6 +396,10 @@ namespace TourApp
             if (mtbPhone.Text.Length == 13)
             {
                 chkPhone.Checked = true;
+            }
+            else if (mtbPhone.Text.Length != 13)
+            {
+                chkPhone.Checked = false;
             }
         }
     }

@@ -232,7 +232,7 @@ namespace TourApp
 
         private void tbPasscode_TextChanged(object sender, EventArgs e)
         {
-            if (tbPasscode.Text == passStr)
+            if (tbPasscode.Text.ToLower() == passStr)
             {
                 btnSubmit.Enabled = true;
             }

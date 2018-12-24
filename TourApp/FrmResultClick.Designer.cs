@@ -126,10 +126,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblTitle.Location = new System.Drawing.Point(15, 26);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(0, 24);
+            this.lblTitle.Size = new System.Drawing.Size(0, 19);
             this.lblTitle.TabIndex = 10;
             // 
             // lblhome

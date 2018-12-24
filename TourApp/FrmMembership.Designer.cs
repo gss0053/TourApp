@@ -299,7 +299,7 @@
             // lblIDValid
             // 
             this.lblIDValid.AutoSize = true;
-            this.lblIDValid.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblIDValid.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblIDValid.Location = new System.Drawing.Point(330, 95);
             this.lblIDValid.Name = "lblIDValid";
             this.lblIDValid.Size = new System.Drawing.Size(53, 12);
@@ -387,7 +387,6 @@
             // 
             // checker
             // 
-            this.checker.Enabled = true;
             this.checker.Tick += new System.EventHandler(this.checker_Tick);
             // 
             // pbCaptchaChk
