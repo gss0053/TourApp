@@ -10,6 +10,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,9 +18,11 @@ namespace TourApp
 {
     public partial class FrmMembership : Form
     {
+        internal bool captchk = false;
         List<Membership> lstMembership;
         DBConnect dbconnect = new DBConnect();
         List<Language> languages;
+        bool idValid = false;
 
         
 
@@ -50,7 +53,7 @@ namespace TourApp
             lblValid1.Visible = true;
             lblIDRule.Location = new Point(182, 56);
             lblIDRule.Visible = true;
-            lblIDValid.Location = new Point(330, 58);
+            lblIDValid.Location = new Point(330, 73);
             lblIDValid.Visible = true;
             lblPassword.Location = new Point(72, 93);
             tbPassword.Location = new Point(183, 90);
@@ -104,17 +107,23 @@ namespace TourApp
 
             btnLogin.Visible = false;
             btnLogin.Enabled = false;
-            btnRegist.Text = "등록";
+            //btnRegist.Text = "등록";
             btnRegist.Location = new Point(190, 650);
+            btnRegist.Enabled = false;
             btnFind.Location = new Point(308, 650);
-            btnFind.Text = "뒤로";
+            //btnFind.Text = "뒤로";
             btnFind.Click += btnFind_Click2;
             btnFind.Click -= btnFind_Click1;
             btnRegist.Click += btnRegist_Click2;
             btnRegist.Click -= btnRegist_Click1;
 
+            lblValid.Visible = true;
 
-            this.Size = new System.Drawing.Size(454, 700);
+            pbCaptcha.ImageLocation = Application.StartupPath + @"\images\robovalid.jpg";
+            pbCaptchaChk.ImageLocation = Application.StartupPath + @"\images\robobox.jpg";
+
+            this.Size = new System.Drawing.Size(524, 700);
+            pbClose.Location = new Point(468, 1);
         }
 
         private void btnRegist_Click2(object sender, EventArgs e)
@@ -132,6 +141,10 @@ namespace TourApp
             string birthday = cbYear.Text + month + day;
             string[] memberinfo = new string[5] { tbID.Text, tbPassword.Text, tbName.Text, mtbPhone.Text, birthday };
             dbconnect.ExecuteInsert(memberinfo);
+
+            MessageBox.Show("submit complete");
+
+            btnFind_Click2(null, null);
         }
 
         private void ControlCB()
@@ -144,13 +157,15 @@ namespace TourApp
 
         private void btnFind_Click1(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnFind_Click2(object sender, EventArgs e)
         {
             Controls.Clear();
             InitializeComponent();
+            captchk = false;
+            pbClose.ImageLocation = Application.StartupPath + @"\images\icon.png";
         }
 
         private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -195,13 +210,15 @@ namespace TourApp
             {
                 if (item.Id == tbID.Text)
                 {
+
                     MessageBox.Show("Overlap ID.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (item.Id != tbID.Text)
-                {
-                    MessageBox.Show("Pass Id.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
+            MessageBox.Show("Pass Id.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            idValid = true;
+            lblIDValid.Text = "validated";
+            lblIDValid.ForeColor = Color.Red;
         }
 
         private void FrmMembership_Load(object sender, EventArgs e)
@@ -292,7 +309,16 @@ namespace TourApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Close();
+            foreach (Membership item in lstMembership)
+            {
+                if (item.Id == tbID.Text && item.Password == tbPassword.Text)
+                {
+                    MessageBox.Show("Login success");
+                    Close();
+                    return;
+                }
+            }
+            MessageBox.Show("Login denied");
         }
 
         private void tbID_TextChanged(object sender, EventArgs e)
@@ -321,6 +347,41 @@ namespace TourApp
             else
             {
                 chkPwd.Checked = false;
+            }
+        }
+
+        private void pbCaptchaChk_Click(object sender, EventArgs e)
+        {
+            FrmCaptcha frc = new FrmCaptcha();
+            frc.fms = this;
+            frc.ShowDialog();
+        }
+
+        private void checker_Tick(object sender, EventArgs e)
+        {
+            if (captchk == true)
+            {
+                pbCaptchaChk.ImageLocation = Application.StartupPath + @"\images\robocheck.PNG";
+            }
+            if (captchk == true && chkID.Checked == true && chkPhone.Checked == true && chkPwd.Checked == true && chkPwdChk.Checked == true)
+            {
+                btnRegist.Enabled = true;
+            }
+        }
+
+        private void tbChk_TextChanged(object sender, EventArgs e)
+        {
+            if (tbChk.Text == tbPassword.Text)
+            {
+                chkPwdChk.Checked = true;
+            }
+        }
+
+        private void mtbPhone_TextChanged(object sender, EventArgs e)
+        {
+            if (mtbPhone.Text.Length == 13)
+            {
+                chkPhone.Checked = true;
             }
         }
     }

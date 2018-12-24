@@ -51,6 +51,7 @@ namespace TourApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //ConfigurationManager.ConnectionStrings["conStr"].ConnectionString += Application.StartupPath + @"\Membership.mdf;Integrated Security=True";
             Language_List();
             Frm_Language_Select fls = new Frm_Language_Select();           
             fls.ShowDialog();
@@ -533,8 +534,15 @@ namespace TourApp
             {
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(homepageNode);
-                HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
-                homepage = root.InnerText;
+                try
+                {
+                    HtmlNode root = doc.DocumentNode.SelectSingleNode("//a");
+                    homepage = root.InnerText;
+                }
+                catch (NullReferenceException)
+                {
+                    homepage = homepageNode;
+                }
             }
             else
             {

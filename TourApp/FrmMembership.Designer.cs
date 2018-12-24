@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnRegist = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -58,11 +59,12 @@
             this.chkPwdChk = new System.Windows.Forms.CheckBox();
             this.chkPhone = new System.Windows.Forms.CheckBox();
             this.lblNameRule = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checker = new System.Windows.Forms.Timer(this.components);
+            this.pbCaptchaChk = new System.Windows.Forms.PictureBox();
+            this.pbCaptcha = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCaptchaChk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 20;
-            this.btnFind.Text = "계정 찾기";
+            this.btnFind.Text = "FIND PWD";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click1);
             // 
@@ -82,7 +84,7 @@
             this.btnRegist.Name = "btnRegist";
             this.btnRegist.Size = new System.Drawing.Size(75, 23);
             this.btnRegist.TabIndex = 19;
-            this.btnRegist.Text = "회원가입";
+            this.btnRegist.Text = "REGISTER";
             this.btnRegist.UseVisualStyleBackColor = true;
             this.btnRegist.Click += new System.EventHandler(this.btnRegist_Click1);
             // 
@@ -92,7 +94,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 18;
-            this.btnLogin.Text = "로그인";
+            this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -141,6 +143,7 @@
             this.tbChk.Size = new System.Drawing.Size(200, 21);
             this.tbChk.TabIndex = 21;
             this.tbChk.Visible = false;
+            this.tbChk.TextChanged += new System.EventHandler(this.tbChk_TextChanged);
             // 
             // lblChk
             // 
@@ -158,9 +161,9 @@
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(120, 125);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(29, 12);
+            this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 23;
-            this.lblName.Text = "이름";
+            this.lblName.Text = "NAME";
             this.lblName.Visible = false;
             // 
             // tbName
@@ -177,9 +180,9 @@
             this.lblPhone.AutoSize = true;
             this.lblPhone.Location = new System.Drawing.Point(72, 137);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(77, 12);
+            this.lblPhone.Size = new System.Drawing.Size(78, 12);
             this.lblPhone.TabIndex = 25;
-            this.lblPhone.Text = "휴대전화번호";
+            this.lblPhone.Text = "CELLPHONE";
             this.lblPhone.Visible = false;
             // 
             // lblValid
@@ -191,6 +194,7 @@
             this.lblValid.Size = new System.Drawing.Size(107, 12);
             this.lblValid.TabIndex = 28;
             this.lblValid.Text = "* 표시는 필수 항목";
+            this.lblValid.Visible = false;
             // 
             // lblValid1
             // 
@@ -241,9 +245,9 @@
             this.lblBirth.AutoSize = true;
             this.lblBirth.Location = new System.Drawing.Point(94, 149);
             this.lblBirth.Name = "lblBirth";
-            this.lblBirth.Size = new System.Drawing.Size(53, 12);
+            this.lblBirth.Size = new System.Drawing.Size(64, 12);
             this.lblBirth.TabIndex = 34;
-            this.lblBirth.Text = "생년월일";
+            this.lblBirth.Text = "BIRTHDAY";
             this.lblBirth.Visible = false;
             // 
             // cbYear
@@ -290,6 +294,7 @@
             this.mtbPhone.Size = new System.Drawing.Size(200, 21);
             this.mtbPhone.TabIndex = 38;
             this.mtbPhone.Visible = false;
+            this.mtbPhone.TextChanged += new System.EventHandler(this.mtbPhone_TextChanged);
             // 
             // lblIDValid
             // 
@@ -380,23 +385,29 @@
             this.lblNameRule.Text = "*50자 이내의 문자";
             this.lblNameRule.Visible = false;
             // 
-            // pictureBox2
+            // checker
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(92, 476);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(41, 41);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 48;
-            this.pictureBox2.TabStop = false;
+            this.checker.Enabled = true;
+            this.checker.Tick += new System.EventHandler(this.checker_Tick);
             // 
-            // pictureBox1
+            // pbCaptchaChk
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(74, 446);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(311, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
+            this.pbCaptchaChk.Location = new System.Drawing.Point(92, 476);
+            this.pbCaptchaChk.Name = "pbCaptchaChk";
+            this.pbCaptchaChk.Size = new System.Drawing.Size(41, 41);
+            this.pbCaptchaChk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCaptchaChk.TabIndex = 48;
+            this.pbCaptchaChk.TabStop = false;
+            this.pbCaptchaChk.Click += new System.EventHandler(this.pbCaptchaChk_Click);
+            // 
+            // pbCaptcha
+            // 
+            this.pbCaptcha.Location = new System.Drawing.Point(72, 446);
+            this.pbCaptcha.Name = "pbCaptcha";
+            this.pbCaptcha.Size = new System.Drawing.Size(325, 100);
+            this.pbCaptcha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCaptcha.TabIndex = 47;
+            this.pbCaptcha.TabStop = false;
             // 
             // pbClose
             // 
@@ -412,9 +423,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 700);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(454, 226);
+            this.Controls.Add(this.pbCaptchaChk);
+            this.Controls.Add(this.pbCaptcha);
             this.Controls.Add(this.lblNameRule);
             this.Controls.Add(this.chkPhone);
             this.Controls.Add(this.chkPwdChk);
@@ -450,8 +461,8 @@
             this.Name = "FrmMembership";
             this.Text = "로그인";
             this.Load += new System.EventHandler(this.FrmMembership_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCaptchaChk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -490,7 +501,8 @@
         private System.Windows.Forms.CheckBox chkPwdChk;
         private System.Windows.Forms.CheckBox chkPhone;
         private System.Windows.Forms.Label lblNameRule;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbCaptcha;
+        private System.Windows.Forms.PictureBox pbCaptchaChk;
+        private System.Windows.Forms.Timer checker;
     }
 }
