@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCaptcha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCaptcha.Designer.cs">
+      <DependentUpon>FrmCaptcha.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmResultClick.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCaptcha.resx">
+      <DependentUpon>FrmCaptcha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmResultClick.resx">
       <DependentUpon>FrmResultClick.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,10 +152,91 @@
     <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\3712461_1.gif" />
+    <Content Include="images\AjarDampAntelopegroundsquirrel-size_restricted.gif" />
+    <Content Include="images\captcha\1.PNG" />
+    <Content Include="images\captcha\1_2.PNG" />
+    <Content Include="images\captcha\1_3.PNG" />
+    <Content Include="images\captcha\2.PNG" />
+    <Content Include="images\captcha\2_2.PNG" />
+    <Content Include="images\captcha\2_3.PNG" />
+    <Content Include="images\captcha\3.PNG" />
+    <Content Include="images\captcha\4.PNG" />
+    <Content Include="images\captcha\4_2.PNG" />
+    <Content Include="images\captcha\4_3.PNG" />
+    <Content Include="images\captcha\5.PNG" />
+    <Content Include="images\captcha\6.PNG" />
+    <Content Include="images\captcha\6_2.PNG" />
+    <Content Include="images\captcha\7.PNG" />
+    <Content Include="images\captcha\8.PNG" />
+    <Content Include="images\captcha\9.PNG" />
+    <Content Include="images\captcha\a.PNG" />
+    <Content Include="images\captcha\a_2.PNG" />
+    <Content Include="images\captcha\a_3.PNG" />
+    <Content Include="images\captcha\b.PNG" />
+    <Content Include="images\captcha\b_2.PNG" />
+    <Content Include="images\captcha\c.PNG" />
+    <Content Include="images\captcha\c_2.PNG" />
+    <Content Include="images\captcha\d.PNG" />
+    <Content Include="images\captcha\d_2.PNG" />
+    <Content Include="images\captcha\d_3.PNG" />
+    <Content Include="images\captcha\e.PNG" />
+    <Content Include="images\captcha\e_2.PNG" />
+    <Content Include="images\captcha\e_3.PNG" />
+    <Content Include="images\captcha\e_4.PNG" />
+    <Content Include="images\captcha\f.PNG" />
+    <Content Include="images\captcha\g.PNG" />
+    <Content Include="images\captcha\h.PNG" />
+    <Content Include="images\captcha\h_2.PNG" />
+    <Content Include="images\captcha\h_3.PNG" />
+    <Content Include="images\captcha\i.PNG" />
+    <Content Include="images\captcha\i_2.PNG" />
+    <Content Include="images\captcha\j.PNG" />
+    <Content Include="images\captcha\j_2.PNG" />
+    <Content Include="images\captcha\k.PNG" />
+    <Content Include="images\captcha\k_2.PNG" />
+    <Content Include="images\captcha\k_3.PNG" />
+    <Content Include="images\captcha\l.PNG" />
+    <Content Include="images\captcha\l_2.PNG" />
+    <Content Include="images\captcha\m.PNG" />
+    <Content Include="images\captcha\m_2.PNG" />
+    <Content Include="images\captcha\n.PNG" />
+    <Content Include="images\captcha\n_2.PNG" />
+    <Content Include="images\captcha\o.PNG" />
+    <Content Include="images\captcha\p.PNG" />
+    <Content Include="images\captcha\p_2.PNG" />
+    <Content Include="images\captcha\q.PNG" />
+    <Content Include="images\captcha\r.PNG" />
+    <Content Include="images\captcha\r_2.PNG" />
+    <Content Include="images\captcha\s.PNG" />
+    <Content Include="images\captcha\s_2.PNG" />
+    <Content Include="images\captcha\t.PNG" />
+    <Content Include="images\captcha\t_2.PNG" />
+    <Content Include="images\captcha\u.PNG" />
+    <Content Include="images\captcha\v.PNG" />
+    <Content Include="images\captcha\w.PNG" />
+    <Content Include="images\captcha\w_2.PNG" />
+    <Content Include="images\captcha\w_3.PNG" />
+    <Content Include="images\captcha\x.PNG" />
+    <Content Include="images\captcha\x_2.PNG" />
+    <Content Include="images\captcha\x_3.PNG" />
+    <Content Include="images\captcha\y.PNG" />
+    <Content Include="images\captcha\y_2.PNG" />
+    <Content Include="images\captcha\z.PNG" />
     <Content Include="images\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\no.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\reset.png" />
+    <Content Include="images\robobox.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\robocheck.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\robovalid.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Membership.mdf">
