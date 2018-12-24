@@ -51,6 +51,7 @@ namespace TourApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //ConfigurationManager.ConnectionStrings["conStr"].ConnectionString += Application.StartupPath + @"\Membership.mdf;Integrated Security=True";
             Language_List();
             Frm_Language_Select fls = new Frm_Language_Select();           
             fls.ShowDialog();
