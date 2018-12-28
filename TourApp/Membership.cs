@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +43,13 @@ namespace TourApp
             set { birthday = value; }
         }
 
+        public Membership(string id, string password, string name, string phone)
+        {
+            this.id = id;
+            this.password = password;
+            this.name = name;
+            this.phone = phone;
+        }
 
         public Membership() { }
 

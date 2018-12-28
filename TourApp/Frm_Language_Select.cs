@@ -83,5 +83,11 @@ namespace TourApp
 
             Close();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            frm_admin fa = new frm_admin();
+            fa.Show();
+        }
     }
 }

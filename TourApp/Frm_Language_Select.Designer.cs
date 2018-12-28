@@ -169,6 +169,7 @@
             this.label1.Size = new System.Drawing.Size(301, 35);
             this.label1.TabIndex = 10;
             this.label1.Text = "Choice Language";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pbxKor
             // 
