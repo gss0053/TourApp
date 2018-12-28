@@ -27,6 +27,7 @@ namespace TourApp
         {
             Captchar_Algo();
             Captchar_Create();
+            textBox1.Text = passStr;
         }
 
         private void Captchar_Algo()
@@ -244,6 +245,7 @@ namespace TourApp
             InitializeComponent();
             Captchar_Algo();
             Captchar_Create();
+            textBox1.Text = passStr;
         }
     }
 }

@@ -46,6 +46,7 @@
             this.pbCapt2 = new System.Windows.Forms.PictureBox();
             this.pbCapt1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +56,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+
+            this.textBox1 = new System.Windows.Forms.TextBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.pbReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapt10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapt9)).BeginInit();
@@ -283,6 +287,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+
             // label1
             // 
             this.label1.AutoSize = true;
@@ -372,6 +377,14 @@
             this.label9.Size = new System.Drawing.Size(14, 12);
             this.label9.TabIndex = 23;
             this.label9.Text = ">";
+
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(109, 360);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(214, 21);
+            this.textBox1.TabIndex = 15;
+
             // 
             // FrmCaptcha
             // 
@@ -379,6 +392,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(550, 550);
+
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -388,6 +402,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+
+            this.Controls.Add(this.textBox1);
+
             this.Controls.Add(this.pbReset);
             this.Controls.Add(this.pbCapt10);
             this.Controls.Add(this.pbCapt9);
@@ -442,6 +459,7 @@
         private System.Windows.Forms.PictureBox pbCapt10;
         private System.Windows.Forms.ImageList imgListCapt;
         private System.Windows.Forms.PictureBox pbReset;
+
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -451,5 +469,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+
+        private System.Windows.Forms.TextBox textBox1;
+
     }
 }
