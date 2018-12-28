@@ -65,7 +65,7 @@ namespace TourApp
             SqlCommand comm = new SqlCommand();
             comm.Connection = con;
             comm.CommandType = CommandType.StoredProcedure;
-            comm.CommandText = "MInsert";
+            comm.CommandText = "Insert";
 
             comm.Parameters.AddWithValue("@ID", memberinfo[0]);
             comm.Parameters.AddWithValue("@PASSWORD", memberinfo[1]);
@@ -85,7 +85,7 @@ namespace TourApp
             SqlCommand comm = new SqlCommand();
             comm.Connection = con;
             comm.CommandType = CommandType.StoredProcedure;
-            comm.CommandText = "MSelect";
+            comm.CommandText = "Select";
 
             SqlDataReader sr = comm.ExecuteReader();
 

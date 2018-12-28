@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -107,11 +108,11 @@ namespace TourApp
 
             btnLogin.Visible = false;
             btnLogin.Enabled = false;
-            //btnRegist.Text = "등록";
+            btnRegist.Text = "SUBMIT";
             btnRegist.Location = new Point(190, 650);
             btnRegist.Enabled = false;
             btnFind.Location = new Point(308, 650);
-            //btnFind.Text = "뒤로";
+            btnFind.Text = "CANCEL";
             btnFind.Click += btnFind_Click2;
             btnFind.Click -= btnFind_Click1;
             btnRegist.Click += btnRegist_Click2;
@@ -139,7 +140,16 @@ namespace TourApp
                 day = "0" + cbDay.Text;
             }
             string birthday = cbYear.Text + month + day;
-            string[] memberinfo = new string[5] { tbID.Text, tbPassword.Text, tbName.Text, mtbPhone.Text, birthday };
+            RSACryptoService rsa = new RSACryptoService(tbPassword.Text);
+            string passwordCrypt = rsa.RSAInitializer()[0];
+            string privateKey = rsa.RSAInitializer()[1];
+            using (StreamWriter outputFile = new StreamWriter(@"..\..\"+ tbID.Text +".txt"))
+            {
+                outputFile.Write(privateKey);
+            }
+            //string 변수이름 = File.ReadAllText(@"경로");
+
+            string[] memberinfo = new string[5] { tbID.Text, passwordCrypt, tbName.Text, mtbPhone.Text, birthday };
             dbconnect.ExecuteInsert(memberinfo);
 
             MessageBox.Show("submit complete");
@@ -210,7 +220,6 @@ namespace TourApp
             {
                 if (item.Id == tbID.Text)
                 {
-
                     MessageBox.Show("Overlap ID.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }

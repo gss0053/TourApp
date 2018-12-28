@@ -46,6 +46,7 @@
             this.pbCapt2 = new System.Windows.Forms.PictureBox();
             this.pbCapt1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapt10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapt9)).BeginInit();
@@ -274,12 +275,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(109, 360);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(214, 21);
+            this.textBox1.TabIndex = 15;
+            // 
             // FrmCaptcha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(550, 550);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pbReset);
             this.Controls.Add(this.pbCapt10);
             this.Controls.Add(this.pbCapt9);
@@ -334,5 +343,6 @@
         private System.Windows.Forms.PictureBox pbCapt10;
         private System.Windows.Forms.ImageList imgListCapt;
         private System.Windows.Forms.PictureBox pbReset;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -63,6 +63,8 @@
             this.pbCaptchaChk = new System.Windows.Forms.PictureBox();
             this.pbCaptcha = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptchaChk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -100,7 +102,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(138, 99);
+            this.tbPassword.Location = new System.Drawing.Point(138, 83);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '●';
             this.tbPassword.Size = new System.Drawing.Size(200, 21);
@@ -118,7 +120,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(40, 102);
+            this.lblPassword.Location = new System.Drawing.Point(40, 86);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(72, 12);
             this.lblPassword.TabIndex = 15;
@@ -419,11 +421,30 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(138, 116);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 21);
+            this.textBox1.TabIndex = 49;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 12);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "CERTIFICATE";
+            // 
             // FrmMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 226);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pbCaptchaChk);
             this.Controls.Add(this.pbCaptcha);
             this.Controls.Add(this.lblNameRule);
@@ -504,5 +525,7 @@
         private System.Windows.Forms.PictureBox pbCaptcha;
         private System.Windows.Forms.PictureBox pbCaptchaChk;
         private System.Windows.Forms.Timer checker;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
