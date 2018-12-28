@@ -66,6 +66,7 @@
             this.tbCertificate = new System.Windows.Forms.TextBox();
             this.lblCertificate = new System.Windows.Forms.Label();
             this.ofdCertificate = new System.Windows.Forms.OpenFileDialog();
+            this.lblAdminPage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptchaChk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -73,12 +74,14 @@
             // 
             // btnFind
             // 
+            this.btnFind.Enabled = false;
             this.btnFind.Location = new System.Drawing.Point(308, 159);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 20;
             this.btnFind.Text = "FIND PWD";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Visible = false;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click1);
             // 
             // btnRegist
@@ -99,7 +102,7 @@
             this.btnLogin.TabIndex = 18;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click1);
             // 
             // tbPassword
             // 
@@ -390,6 +393,7 @@
             // 
             // checker
             // 
+            this.checker.Enabled = true;
             this.checker.Tick += new System.EventHandler(this.checker_Tick);
             // 
             // pbCaptchaChk
@@ -443,11 +447,23 @@
             // 
             this.ofdCertificate.FileName = "openFileDialog1";
             // 
+            // lblAdminPage
+            // 
+            this.lblAdminPage.AutoSize = true;
+            this.lblAdminPage.Location = new System.Drawing.Point(12, 9);
+            this.lblAdminPage.Name = "lblAdminPage";
+            this.lblAdminPage.Size = new System.Drawing.Size(81, 12);
+            this.lblAdminPage.TabIndex = 51;
+            this.lblAdminPage.Text = "ADMIN PAGE";
+            this.lblAdminPage.Visible = false;
+            this.lblAdminPage.Click += new System.EventHandler(this.lblAdminPage_Click);
+            // 
             // FrmMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 226);
+            this.Controls.Add(this.lblAdminPage);
             this.Controls.Add(this.lblCertificate);
             this.Controls.Add(this.tbCertificate);
             this.Controls.Add(this.pbCaptchaChk);
@@ -533,5 +549,6 @@
         private System.Windows.Forms.TextBox tbCertificate;
         private System.Windows.Forms.Label lblCertificate;
         private System.Windows.Forms.OpenFileDialog ofdCertificate;
+        private System.Windows.Forms.Label lblAdminPage;
     }
 }

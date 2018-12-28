@@ -112,6 +112,8 @@ namespace TourApp
             btnRegist.Text = "SUBMIT";
             btnRegist.Location = new Point(190, 650);
             btnRegist.Enabled = false;
+            btnFind.Enabled = true;
+            btnFind.Visible = true;
             btnFind.Location = new Point(308, 650);
             btnFind.Text = "CANCEL";
             btnFind.Click += btnFind_Click2;
@@ -324,7 +326,7 @@ namespace TourApp
             lblNameRule.Text = languages[Int32.Parse(ConfigurationManager.AppSettings["lang"])].Within;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click1(object sender, EventArgs e)
         {
             foreach (Membership item in lstMembership)
             {
@@ -339,6 +341,11 @@ namespace TourApp
                 }
             }
             MessageBox.Show("Login denied");
+        }
+
+        private void btnLogin_Click2(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void tbID_TextChanged(object sender, EventArgs e)
@@ -394,6 +401,14 @@ namespace TourApp
             {
                 btnRegist.Enabled = false;
             }
+
+            if (tbID.Text == "Admin" && tbPassword.Text == "1234")
+            {
+                btnLogin.Text = "PASS";
+                btnLogin.Click -= btnLogin_Click1;
+                btnLogin.Click += btnLogin_Click2;
+                lblAdminPage.Visible = true;
+            }
         }
 
         private void tbChk_TextChanged(object sender, EventArgs e)
@@ -432,6 +447,12 @@ namespace TourApp
             }
 
             tbCertificate.Text = this.privateKey;
+        }
+
+        private void lblAdminPage_Click(object sender, EventArgs e)
+        {
+            frm_admin fa = new frm_admin();
+            fa.Show();
         }
     }
 }
