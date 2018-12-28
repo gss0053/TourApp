@@ -389,18 +389,18 @@ namespace TourApp
 
         private void checker_Tick(object sender, EventArgs e)
         {
-            if (captchk == true)
-            {
-                pbCaptchaChk.ImageLocation = Application.StartupPath + @"\images\robocheck.PNG";
-            }
-            if (captchk == true && chkID.Checked == true && chkPhone.Checked == true && chkPwd.Checked == true && chkPwdChk.Checked == true)
-            {
-                btnRegist.Enabled = true;
-            }
-            else
-            {
-                btnRegist.Enabled = false;
-            }
+            //if (captchk == true)
+            //{
+            //    pbCaptchaChk.ImageLocation = Application.StartupPath + @"\images\robocheck.PNG";
+            //}
+            //if (captchk == true && chkID.Checked == true && chkPhone.Checked == true && chkPwd.Checked == true && chkPwdChk.Checked == true)
+            //{
+            //    btnRegist.Enabled = true;
+            //}
+            //else
+            //{
+            //    btnRegist.Enabled = false;
+            //}
 
             if (tbID.Text == "Admin" && tbPassword.Text == "1234")
             {
