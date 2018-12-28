@@ -19,13 +19,13 @@ namespace TourApp
 {
     public partial class FrmMembership : Form
     {
+        RSACryptoService rsa = new RSACryptoService();
         internal bool captchk = false;
         List<Membership> lstMembership;
         DBConnect dbconnect = new DBConnect();
         List<Language> languages;
         bool idValid = false;
-
-        
+        private string privateKey;
 
         public FrmMembership(List<Membership> lstMembership,List<Language> languages)
         {
@@ -119,6 +119,10 @@ namespace TourApp
             btnRegist.Click += btnRegist_Click2;
             btnRegist.Click -= btnRegist_Click1;
 
+            lblCertificate.Visible = false;
+            tbCertificate.Enabled = false;
+            tbCertificate.Visible = false;
+
             lblValid.Visible = true;
 
             pbCaptcha.ImageLocation = Application.StartupPath + @"\images\robovalid.jpg";
@@ -141,14 +145,14 @@ namespace TourApp
                 day = "0" + cbDay.Text;
             }
             string birthday = cbYear.Text + month + day;
-            RSACryptoService rsa = new RSACryptoService(tbPassword.Text);
-            string passwordCrypt = rsa.RSAInitializer()[0];
-            string privateKey = rsa.RSAInitializer()[1];
+            string[] tempstring = new string[2];
+            tempstring = rsa.RSAInitializer(tbPassword.Text);
+            string passwordCrypt = tempstring[0];
+            string privateKey = tempstring[1];
             using (StreamWriter outputFile = new StreamWriter(@"..\..\"+ tbID.Text +".txt"))
             {
                 outputFile.Write(privateKey);
             }
-            //string 변수이름 = File.ReadAllText(@"경로");
 
             string[] memberinfo = new string[5] { tbID.Text, passwordCrypt, tbName.Text, mtbPhone.Text, birthday };
             dbconnect.ExecuteInsert(memberinfo);
@@ -324,11 +328,14 @@ namespace TourApp
         {
             foreach (Membership item in lstMembership)
             {
-                if (item.Id == tbID.Text && item.Password == tbPassword.Text)
+                if (item.Id == tbID.Text)
                 {
-                    MessageBox.Show("Login success");
-                    Close();
-                    return;
+                    if (tbPassword.Text == rsa.RSADecrypt(item.Password, tbCertificate.Text))
+                    {
+                        MessageBox.Show("Login success");
+                        Close();
+                        return;
+                    }
                 }
             }
             MessageBox.Show("Login denied");
@@ -411,6 +418,20 @@ namespace TourApp
             {
                 chkPhone.Checked = false;
             }
+        }
+
+        private void tbCertificate_Click(object sender, EventArgs e)
+        {
+            tbCertificate.Clear();
+            string privateKey;
+            ofdCertificate.InitialDirectory = "C:\\";
+            if (ofdCertificate.ShowDialog() == DialogResult.OK)
+            {
+                privateKey = ofdCertificate.FileName;
+                this.privateKey = File.ReadAllText(privateKey);
+            }
+
+            tbCertificate.Text = this.privateKey;
         }
     }
 }

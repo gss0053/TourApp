@@ -9,17 +9,17 @@ namespace TourApp
 {
     class RSACryptoService
     {
-        List<string> rsaList = new List<string>();
+        string[] rsaList = new string[2];
         private string strings;
         private string encodedString;
 
-        public RSACryptoService(string strings)
+        public RSACryptoService()
         {
-            this.strings = strings;
         }
 
-        public List<string> RSAInitializer()
+        internal string[] RSAInitializer(string strings)
         {
+            this.strings = strings;
             // 암호화 개체 생성
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
 
@@ -38,8 +38,8 @@ namespace TourApp
             encodedString = RSAEncrypt(strings, publicKeyText);
             string decodedString = RSADecrypt(encodedString, privateKeyText);
 
-            rsaList.Add(encodedString);
-            rsaList.Add(privateKeyText);
+            rsaList[0] = encodedString;
+            rsaList[1] = privateKeyText;
 
             return rsaList;
         }
@@ -61,7 +61,7 @@ namespace TourApp
         }
 
         // RSA 복호화
-        private string RSADecrypt(string getValue, string priKey)
+        internal string RSADecrypt(string getValue, string priKey)
         {
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             rsa.FromXmlString(priKey);

@@ -63,8 +63,9 @@
             this.pbCaptchaChk = new System.Windows.Forms.PictureBox();
             this.pbCaptcha = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tbCertificate = new System.Windows.Forms.TextBox();
+            this.lblCertificate = new System.Windows.Forms.Label();
+            this.ofdCertificate = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptchaChk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -420,30 +421,35 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // textBox1
+            // tbCertificate
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(138, 116);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 21);
-            this.textBox1.TabIndex = 49;
+            this.tbCertificate.Location = new System.Drawing.Point(138, 116);
+            this.tbCertificate.Name = "tbCertificate";
+            this.tbCertificate.PasswordChar = '●';
+            this.tbCertificate.Size = new System.Drawing.Size(200, 21);
+            this.tbCertificate.TabIndex = 49;
+            this.tbCertificate.Click += new System.EventHandler(this.tbCertificate_Click);
             // 
-            // label1
+            // lblCertificate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 122);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 12);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "CERTIFICATE";
+            this.lblCertificate.AutoSize = true;
+            this.lblCertificate.Location = new System.Drawing.Point(27, 122);
+            this.lblCertificate.Name = "lblCertificate";
+            this.lblCertificate.Size = new System.Drawing.Size(84, 12);
+            this.lblCertificate.TabIndex = 50;
+            this.lblCertificate.Text = "CERTIFICATE";
+            // 
+            // ofdCertificate
+            // 
+            this.ofdCertificate.FileName = "openFileDialog1";
             // 
             // FrmMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 226);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblCertificate);
+            this.Controls.Add(this.tbCertificate);
             this.Controls.Add(this.pbCaptchaChk);
             this.Controls.Add(this.pbCaptcha);
             this.Controls.Add(this.lblNameRule);
@@ -524,7 +530,8 @@
         private System.Windows.Forms.PictureBox pbCaptcha;
         private System.Windows.Forms.PictureBox pbCaptchaChk;
         private System.Windows.Forms.Timer checker;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbCertificate;
+        private System.Windows.Forms.Label lblCertificate;
+        private System.Windows.Forms.OpenFileDialog ofdCertificate;
     }
 }
